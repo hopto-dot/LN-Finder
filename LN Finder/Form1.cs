@@ -29,7 +29,7 @@ namespace LN_Finder
         class Settings
         {
             public string DToken = "";
-            public int resultsSize = 10;
+            public int resultsSize = 11;
         }
         class Link
         {
@@ -51,6 +51,7 @@ namespace LN_Finder
         {
             loadSettings();
             if (settings.DToken != "") { cbDiscord.Checked = true; }
+            toolStripTextBox1.Text = settings.DToken;
         }
 
         private void loadSettings()
@@ -81,53 +82,81 @@ namespace LN_Finder
             startSearch();
         }
 
-        private void startSearch()
+        private void startSearch(bool testScrapers = false)
         {
-            Text = "LN Finder - Searching...";
+            Text = testScrapers ? "LN Finder - Testing scrapers..." : "LN Finder - Searching...";
             if (tbxSearch.Text.Trim() == "") { return; }
 
             listView1.Items.Clear();
             links.Clear();
             List<Task> actions = new List<Task>();
-            if (cbDiscord.Checked == true && settings.DToken != "")
+            if (testScrapers == false)
+            {
+                if (cbDiscord.Checked == true && settings.DToken != "")
+                {
+                    var discordTask = new Task(searchDiscord);
+                    discordTask.Start();
+                    actions.Add(discordTask);
+                }
+                if (cbBoroboro.Checked == true)
+                {
+                    var boroboroTask = new Task(searchBoroBoro);
+                    boroboroTask.Start();
+                    actions.Add(boroboroTask);
+                }
+                if (cbItazuraneko.Checked == true)
+                {
+                    var itazuraTask = new Task(searchItazura);
+                    itazuraTask.Start();
+                    actions.Add(itazuraTask);
+                }
+                if (cbZLib.Checked == true)
+                {
+                    var zLibTask = new Task(searchZLib);
+                    zLibTask.Start();
+                    actions.Add(zLibTask);
+                }
+                if (cbNyaa.Checked == true)
+                {
+                    var nyaaTask = new Task(searchNyaa);
+                    nyaaTask.Start();
+                    actions.Add(nyaaTask);
+                    var bigNyaaTask = new Task(searchBigNyaaTorrent);
+                    bigNyaaTask.Start();
+                    actions.Add(bigNyaaTask);
+                }
+                if (cbDLRaw.Checked == true)
+                {
+                    var dlRawTask = new Task(searchDLRaw);
+                    dlRawTask.Start();
+                    actions.Add(dlRawTask);
+                }
+            }
+            else
             {
                 var discordTask = new Task(searchDiscord);
                 discordTask.Start();
                 actions.Add(discordTask);
-            }
-            if (cbBoroboro.Checked == true)
-            {
                 var boroboroTask = new Task(searchBoroBoro);
                 boroboroTask.Start();
                 actions.Add(boroboroTask);
-            }
-            if (cbItazuraneko.Checked == true)
-            {
                 var itazuraTask = new Task(searchItazura);
                 itazuraTask.Start();
                 actions.Add(itazuraTask);
-            }
-            if (cbZLib.Checked == true)
-            {
                 var zLibTask = new Task(searchZLib);
                 zLibTask.Start();
                 actions.Add(zLibTask);
-            }
-            if (cbNyaa.Checked == true)
-            {
                 var nyaaTask = new Task(searchNyaa);
                 nyaaTask.Start();
                 actions.Add(nyaaTask);
                 var bigNyaaTask = new Task(searchBigNyaaTorrent);
                 bigNyaaTask.Start();
                 actions.Add(bigNyaaTask);
-            }
-            if (cbDLRaw.Checked == true)
-            {
                 var dlRawTask = new Task(searchDLRaw);
                 dlRawTask.Start();
                 actions.Add(dlRawTask);
             }
+
             Task.WaitAll(actions.ToArray());
 
             if (links.Count == 0)
@@ -137,12 +166,35 @@ namespace LN_Finder
             else
             {
                 listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
-                listView1.Columns[0].Width = 40;
+                listView1.Columns[0].Width = 50;
                 listView1.Columns[1].Width = 100 * settings.resultsSize / 9;
                 listView1.Columns[2].Width = 600 * settings.resultsSize / 9;
                 listView1.Columns[3].Width = 700 * settings.resultsSize / 9;
             }
-            addAllLinks();
+            if (testScrapers == false)
+            {
+                addAllLinks();
+            } else
+            {
+                tbxSearch.Text = "";
+                bool discordWorking = links.Find(x => x.Type == "Discord") == null ? false : true;
+                bool boroboroWorking = links.Find(x => x.Type == "Boroboro") == null ? false : true;
+                bool itazuraWorking = links.Find(x => x.Type == "Itazura") == null ? false : true;
+                bool zlibWorking = links.Find(x => x.Type == "Z-Lib") == null ? false : true;
+                bool NyaaWorking = links.Find(x => x.Type == "Nyaa") == null ? false : true;
+                bool NyaaBigWorking = links.Find(x => x.Description.Contains("truckload")) == null ? false : true;
+                bool dlsiteWorking = links.Find(x => x.Type == "DLSite") == null ? false : true;
+                
+                string functionality =
+                    $"Discord: {(discordWorking ? "Working" : "Not working")}\n" +
+                    $"Boroboro: {(boroboroWorking ? "Working" : "Not working")}\n" +
+                    $"Itazuraneko: {(itazuraWorking ? "Working" : "Not working")}\n" +
+                    $"Z-Library: {(zlibWorking ? "Working" : "Not working")}\n" +
+                    $"Nyaa: {(NyaaWorking ? (NyaaBigWorking ? "Working" : "Partially working") : "Not working")}\n" +
+                    $"DLSite: {(discordWorking ? "Working" : "Not working")}\n";
+                MessageBox.Show(functionality, "Scraper Functionality");
+                Text = "LN Finder";
+            }
         }
 
         private void addAllLinks()
@@ -625,6 +677,7 @@ namespace LN_Finder
                     string settingsString = JsonConvert.SerializeObject(settings, Formatting.Indented);
                     File.WriteAllText("settings.json", settingsString);
 
+                    toolStripTextBox1.Text = settings.DToken;
                     MessageBox.Show($"Discord token is now {token}", "LN Finder");
                 }
             }
@@ -738,9 +791,112 @@ namespace LN_Finder
         //////// menu strip ////////
 
         //quit
+
+        //quit application
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        //open settings.json
+        private void openSettingsFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("notepad.exe", "settings.json");
+            } catch
+            {
+                MessageBox.Show("File not found");
+            }
+        }
+        //open program folder
+        private void openProgramFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
+            }
+            catch
+            {
+                MessageBox.Show("Failed to open folder");
+            }
+        }
+        //type in DToken box
+        private void toolStripTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                string token = toolStripTextBox1.Text;
+                if (token.Length < 60 || !token.Contains(".") || token.Contains(" ")) { MessageBox.Show("That isn't a valid Discord token!", "LN Finder"); cbDiscord.Checked = false; toolStripTextBox1.Text = settings.DToken; return; }
+                settings.DToken = token;
+                string settingsString = JsonConvert.SerializeObject(settings, Formatting.Indented);
+                File.WriteAllText("settings.json", settingsString);
+
+                toolStripTextBox1.Text = settings.DToken;
+                MessageBox.Show($"Discord token is now {token}", "LN Finder");
+
+
+
+            }
+        }
+        //type in results size box
+        private void toolStripTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                int newSize = -1;
+                int.TryParse(toolStripTextBox2.Text, out newSize);
+                if (newSize > 3 && newSize < 60)
+                {
+                    numericUpDown1.Value = newSize;
+                    settings.resultsSize = newSize;
+                    string settingsString = JsonConvert.SerializeObject(settings, Formatting.Indented);
+                    File.WriteAllText("settings.json", settingsString);
+                }
+            }
+        }
+        //click Edit
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripTextBox1.Text = settings.DToken;
+            toolStripTextBox2.Text = numericUpDown1.Value.ToString();
+        }
+        //test all scrapers click
+        private void checkScraperToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbxSearch.Text = "ソードアート・オンライン";
+            startSearch(true);
+
+            tbxSearch.Text = "";
+        }
+        //check internet
+        private void checkInternetConnectivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var client = new WebClient();
+            try
+            {
+                client.DownloadString("https://www.google.co.uk/");
+                MessageBox.Show("You are connected to the internet");
+            } catch
+            {
+                MessageBox.Show("You are not connected to the internet");
+            }
+        }
+        //reset settings
+        private void resetSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to reset your settings?", "Reset Settings", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    File.Delete("settings.json");
+                    loadSettings();
+                    MessageBox.Show("Successfully reset your settings", "Reset Success");
+                } catch
+                {
+                    MessageBox.Show("Failed to reset your settings", "Reset failed");
+                }
+            }
         }
     }
 }

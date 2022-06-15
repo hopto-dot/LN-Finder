@@ -45,20 +45,20 @@
             this.cbDLRaw = new System.Windows.Forms.CheckBox();
             this.cbAll = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSettingsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProgramFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDiscordTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openProgramFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openSettingsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkScraperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.checkInternetConnectivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.resetSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -253,33 +253,25 @@
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeDiscordTokenToolStripMenuItem,
-            this.changeResultsToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // changeDiscordTokenToolStripMenuItem
-            // 
-            this.changeDiscordTokenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox1});
-            this.changeDiscordTokenToolStripMenuItem.Name = "changeDiscordTokenToolStripMenuItem";
-            this.changeDiscordTokenToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.changeDiscordTokenToolStripMenuItem.Text = "Change Discord token";
-            // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openSettingsFileToolStripMenuItem,
             this.openProgramFolderToolStripMenuItem,
+            this.resetSettingsToolStripMenuItem,
             this.toolStripSeparator1,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openSettingsFileToolStripMenuItem
+            // 
+            this.openSettingsFileToolStripMenuItem.Name = "openSettingsFileToolStripMenuItem";
+            this.openSettingsFileToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.openSettingsFileToolStripMenuItem.Text = "Open settings file";
+            this.openSettingsFileToolStripMenuItem.ToolTipText = "Open settings.json";
+            this.openSettingsFileToolStripMenuItem.Click += new System.EventHandler(this.openSettingsFileToolStripMenuItem_Click);
             // 
             // openProgramFolderToolStripMenuItem
             // 
@@ -287,6 +279,12 @@
             this.openProgramFolderToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.openProgramFolderToolStripMenuItem.Text = "Open program folder";
             this.openProgramFolderToolStripMenuItem.ToolTipText = "Open the folder where the application is located";
+            this.openProgramFolderToolStripMenuItem.Click += new System.EventHandler(this.openProgramFolderToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
             // 
             // quitToolStripMenuItem
             // 
@@ -296,23 +294,30 @@
             this.quitToolStripMenuItem.ToolTipText = "Close the application";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeDiscordTokenToolStripMenuItem,
+            this.changeResultsToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // changeDiscordTokenToolStripMenuItem
+            // 
+            this.changeDiscordTokenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1});
+            this.changeDiscordTokenToolStripMenuItem.Name = "changeDiscordTokenToolStripMenuItem";
+            this.changeDiscordTokenToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.changeDiscordTokenToolStripMenuItem.Text = "Change Discord token";
+            // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
-            // 
-            // openSettingsFileToolStripMenuItem
-            // 
-            this.openSettingsFileToolStripMenuItem.Name = "openSettingsFileToolStripMenuItem";
-            this.openSettingsFileToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.openSettingsFileToolStripMenuItem.Text = "Open settings file";
-            this.openSettingsFileToolStripMenuItem.ToolTipText = "Open settings.json";
+            this.toolStripTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
             // 
             // changeResultsToolStripMenuItem
             // 
@@ -321,6 +326,13 @@
             this.changeResultsToolStripMenuItem.Name = "changeResultsToolStripMenuItem";
             this.changeResultsToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.changeResultsToolStripMenuItem.Text = "Change results size";
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
+            this.toolStripTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox2_KeyPress);
             // 
             // debugToolStripMenuItem
             // 
@@ -333,37 +345,26 @@
             // 
             // checkScraperToolStripMenuItem
             // 
-            this.checkScraperToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
             this.checkScraperToolStripMenuItem.Name = "checkScraperToolStripMenuItem";
             this.checkScraperToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
             this.checkScraperToolStripMenuItem.Text = "Check scraper functionality";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "All",
-            "Discord",
-            "Boroboro",
-            "Itazuraneko",
-            "Z-Library",
-            "Nyaa",
-            "DLRaw"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
-            this.toolStripComboBox1.Text = "All";
+            this.checkScraperToolStripMenuItem.ToolTipText = "Test to make sure the scrapers are working";
+            this.checkScraperToolStripMenuItem.Click += new System.EventHandler(this.checkScraperToolStripMenuItem_Click);
             // 
             // checkInternetConnectivityToolStripMenuItem
             // 
             this.checkInternetConnectivityToolStripMenuItem.Name = "checkInternetConnectivityToolStripMenuItem";
             this.checkInternetConnectivityToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
             this.checkInternetConnectivityToolStripMenuItem.Text = "Check internet connection";
+            this.checkInternetConnectivityToolStripMenuItem.ToolTipText = "Check if you are connected to the internet";
+            this.checkInternetConnectivityToolStripMenuItem.Click += new System.EventHandler(this.checkInternetConnectivityToolStripMenuItem_Click);
             // 
-            // toolStripTextBox2
+            // resetSettingsToolStripMenuItem
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
+            this.resetSettingsToolStripMenuItem.Name = "resetSettingsToolStripMenuItem";
+            this.resetSettingsToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.resetSettingsToolStripMenuItem.Text = "Reset settings";
+            this.resetSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetSettingsToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -430,9 +431,9 @@
         private System.Windows.Forms.ToolStripMenuItem changeResultsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkScraperToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem checkInternetConnectivityToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripMenuItem resetSettingsToolStripMenuItem;
     }
 }
 
