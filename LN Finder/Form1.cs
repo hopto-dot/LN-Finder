@@ -317,6 +317,50 @@ namespace LN_Finder
                 {
                     looped++;
                     string msgContent = result.Children().ToList()[2].Children().ToList()[0].Value<String>();
+                    
+                    if (msgContent.Contains("https://discord.com/channels/"))
+                    {
+                        string temp = msgContent;
+                        try
+                        {
+                            temp = temp.Substring(temp.IndexOf(tbxSearch.Text));
+                            temp = temp.Substring(temp.IndexOf("https://discord.com/channels/"));
+                            try
+                            {
+                                temp = temp.Substring(0, temp.IndexOf("\n"));
+                            } catch { }
+                            Link link = new Link();
+                            link.Type = "Discord";
+                            link.URL = temp;
+
+                            link.Description = msgContent;
+                            bool startReached = false;
+                            int contentIndex = msgContent.IndexOf(tbxSearch.Text);
+                            while (startReached == false)
+                            {
+                                if (contentIndex == 0) { startReached = true; break; }
+                                string indexChar = msgContent.Substring(contentIndex, 1);
+                                if (indexChar == "\n") { startReached = true; break; };
+                                contentIndex--;
+                            }
+                            link.Description = link.Description.Substring(contentIndex, link.Description.IndexOf(link.URL) - contentIndex).Trim();
+                            link.ID = links.Count;
+                            links.Add(link);
+                            continue;
+                        } catch
+                        {
+                            Link link = new Link();
+                            link.Type = "Discord";
+                            link.URL = "https://discord.com/channels/617136488840429598/882987261627617310"; //+ result.Children().ToList()[0].Children().ToList()[0].Value<String>();
+                            link.Description = "List of downloads";
+                            link.ID = links.Count;
+                            links.Add(link);
+                            continue;
+                        }
+                        
+
+                        Console.WriteLine();
+                    }
                     if (msgContent.Contains("Books:"))
                     {
                         if (msgContent.Contains(tbxSearch.Text)) { inBookList = true; }
@@ -663,6 +707,40 @@ namespace LN_Finder
         private void tbxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r') { startSearch(); }
+        }
+
+        private void cbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAll.Checked == true)
+            {
+                if (settings.DToken != "") { cbDiscord.Checked = true; }
+                cbBoroboro.Checked = true;
+                cbItazuraneko.Checked = true;
+                cbZLib.Checked = true;
+                cbNyaa.Checked = true;
+                cbDLRaw.Checked = true;
+            }
+            else
+            {
+                cbDiscord.Checked = false;
+                cbBoroboro.Checked = false;
+                cbItazuraneko.Checked = false;
+                cbZLib.Checked = false;
+                cbNyaa.Checked = false;
+                cbDLRaw.Checked = false;
+            }
+        }
+
+        
+
+
+
+        //////// menu strip ////////
+
+        //quit
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
