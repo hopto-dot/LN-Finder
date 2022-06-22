@@ -117,6 +117,7 @@
             this.cbDiscord.Text = "Discord";
             this.cbDiscord.UseVisualStyleBackColor = true;
             this.cbDiscord.CheckedChanged += new System.EventHandler(this.cbDiscord_CheckedChanged);
+            this.cbDiscord.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // cbBoroboro
             // 
@@ -130,6 +131,7 @@
             this.cbBoroboro.TabIndex = 6;
             this.cbBoroboro.Text = "Boroboro";
             this.cbBoroboro.UseVisualStyleBackColor = true;
+            this.cbBoroboro.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // cbItazuraneko
             // 
@@ -143,6 +145,7 @@
             this.cbItazuraneko.TabIndex = 7;
             this.cbItazuraneko.Text = "Itazuraneko";
             this.cbItazuraneko.UseVisualStyleBackColor = true;
+            this.cbItazuraneko.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // cbZLib
             // 
@@ -156,6 +159,7 @@
             this.cbZLib.TabIndex = 8;
             this.cbZLib.Text = "Z-Lib";
             this.cbZLib.UseVisualStyleBackColor = true;
+            this.cbZLib.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // collumnType
             // 
@@ -189,7 +193,7 @@
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.ShowItemToolTips = true;
-            this.listView1.Size = new System.Drawing.Size(932, 475);
+            this.listView1.Size = new System.Drawing.Size(932, 439);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -283,9 +287,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(952, 230);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 20);
+            this.label1.Size = new System.Drawing.Size(104, 20);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Results Size:";
+            this.label1.Text = "Results Size";
             // 
             // cbNyaa
             // 
@@ -299,6 +303,7 @@
             this.cbNyaa.TabIndex = 9;
             this.cbNyaa.Text = "Nyaa";
             this.cbNyaa.UseVisualStyleBackColor = true;
+            this.cbNyaa.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // cbDLRaw
             // 
@@ -312,6 +317,7 @@
             this.cbDLRaw.TabIndex = 10;
             this.cbDLRaw.Text = "DLRaw";
             this.cbDLRaw.UseVisualStyleBackColor = true;
+            this.cbDLRaw.Click += new System.EventHandler(this.cbAnyLN);
             // 
             // cbAll
             // 
@@ -323,7 +329,7 @@
             this.cbAll.TabIndex = 4;
             this.cbAll.Text = "Select All";
             this.cbAll.UseVisualStyleBackColor = true;
-            this.cbAll.CheckedChanged += new System.EventHandler(this.cbAll_CheckedChanged);
+            this.cbAll.Click += new System.EventHandler(this.cbAll_Click);
             // 
             // menuStrip1
             // 
@@ -416,6 +422,7 @@
             // 
             // toolStripTextBox1
             // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
             this.toolStripTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
@@ -430,6 +437,7 @@
             // 
             // toolStripTextBox2
             // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
             this.toolStripTextBox2.Text = "11";
@@ -515,30 +523,33 @@
             this.cbRyuu.Text = "Ryuugames";
             this.cbRyuu.UseVisualStyleBackColor = true;
             this.cbRyuu.Visible = false;
+            this.cbRyuu.Click += new System.EventHandler(this.cbAnyVN);
             // 
             // cbGGB
             // 
             this.cbGGB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGGB.AutoSize = true;
-            this.cbGGB.Location = new System.Drawing.Point(961, 402);
+            this.cbGGB.Location = new System.Drawing.Point(960, 428);
             this.cbGGB.Name = "cbGGB";
             this.cbGGB.Size = new System.Drawing.Size(88, 20);
             this.cbGGB.TabIndex = 17;
             this.cbGGB.Text = "GGBases";
             this.cbGGB.UseVisualStyleBackColor = true;
             this.cbGGB.Visible = false;
+            this.cbGGB.Click += new System.EventHandler(this.cbAnyVN);
             // 
             // cbCrane
             // 
             this.cbCrane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCrane.AutoSize = true;
-            this.cbCrane.Location = new System.Drawing.Point(963, 428);
+            this.cbCrane.Location = new System.Drawing.Point(963, 402);
             this.cbCrane.Name = "cbCrane";
             this.cbCrane.Size = new System.Drawing.Size(106, 20);
             this.cbCrane.TabIndex = 17;
             this.cbCrane.Text = "Crane Anime";
             this.cbCrane.UseVisualStyleBackColor = true;
             this.cbCrane.Visible = false;
+            this.cbCrane.Click += new System.EventHandler(this.cbAnyVN);
             // 
             // cbMiko
             // 
@@ -551,28 +562,29 @@
             this.cbMiko.Text = "Miko";
             this.cbMiko.UseVisualStyleBackColor = true;
             this.cbMiko.Visible = false;
+            this.cbMiko.Click += new System.EventHandler(this.cbAnyVN);
             // 
             // cbAnimeSharing
             // 
             this.cbAnimeSharing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAnimeSharing.AutoSize = true;
-            this.cbAnimeSharing.Location = new System.Drawing.Point(963, 454);
+            this.cbAnimeSharing.Location = new System.Drawing.Point(962, 454);
             this.cbAnimeSharing.Name = "cbAnimeSharing";
             this.cbAnimeSharing.Size = new System.Drawing.Size(113, 20);
             this.cbAnimeSharing.TabIndex = 17;
             this.cbAnimeSharing.Text = "AnimeSharing";
             this.cbAnimeSharing.UseVisualStyleBackColor = true;
             this.cbAnimeSharing.Visible = false;
+            this.cbAnimeSharing.Click += new System.EventHandler(this.cbAnyVN);
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 577);
+            this.ClientSize = new System.Drawing.Size(1079, 525);
             this.Controls.Add(this.cbAnimeSharing);
             this.Controls.Add(this.cbMiko);
-            this.Controls.Add(this.cbCrane);
             this.Controls.Add(this.cbGGB);
             this.Controls.Add(this.cbRyuu);
             this.Controls.Add(this.btnVN);
@@ -590,6 +602,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.cbCrane);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(418, 357);
             this.Name = "Form1";

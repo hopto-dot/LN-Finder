@@ -52,6 +52,11 @@ namespace LN_Finder
             loadSettings();
             if (settings.DToken != "") { cbDiscord.Checked = true; }
             toolStripTextBox1.Text = settings.DToken;
+
+            if (cbDiscord.Checked == true & cbBoroboro.Checked == true && cbItazuraneko.Checked == true && cbZLib.Checked == true && cbNyaa.Checked == true && cbDLRaw.Checked == true)
+            {
+                cbAll.Checked = true;
+            }
         }
 
         private void loadSettings()
@@ -778,40 +783,55 @@ namespace LN_Finder
             if (e.KeyChar == '\r') { startSearch(); }
         }
 
-        private void cbAll_CheckedChanged(object sender, EventArgs e)
+        //select all
+        private void cbAll_Click(object sender, EventArgs e)
+        {
+            selectAllChanged();
+        }
+
+        private void selectAllChanged()
         {
             if (cbAll.Checked == true)
             {
-                if (settings.DToken != "") { cbDiscord.Checked = true; }
-                cbBoroboro.Checked = true;
-                cbItazuraneko.Checked = true;
-                cbZLib.Checked = true;
-                cbNyaa.Checked = true;
-                cbDLRaw.Checked = true;
-
-                cbRyuu.Checked = true;
-                cbGGB.Checked = true;
-                cbCrane.Checked = true;
-                cbAnimeSharing.Checked = true;
-                cbMiko.Checked = true;
+                if (btnLN.Enabled == false) //if viewing light novels
+                {
+                    if (settings.DToken != "") { cbDiscord.Checked = true; }
+                    cbBoroboro.Checked = true;
+                    cbItazuraneko.Checked = true;
+                    cbZLib.Checked = true;
+                    cbNyaa.Checked = true;
+                    cbDLRaw.Checked = true;
+                }
+                else //if viewing visual novels
+                {
+                    cbRyuu.Checked = true;
+                    cbGGB.Checked = true;
+                    cbCrane.Checked = true;
+                    cbAnimeSharing.Checked = true;
+                    cbMiko.Checked = true;
+                }
             }
             else
             {
-                cbDiscord.Checked = false;
-                cbBoroboro.Checked = false;
-                cbItazuraneko.Checked = false;
-                cbZLib.Checked = false;
-                cbNyaa.Checked = false;
-                cbDLRaw.Checked = false;
-
-                cbRyuu.Checked = false;
-                cbGGB.Checked = false;
-                cbCrane.Checked = false;
-                cbAnimeSharing.Checked = false;
-                cbMiko.Checked = false;
+                if (btnLN.Enabled == false) //if viewing light novels
+                {
+                    cbDiscord.Checked = false;
+                    cbBoroboro.Checked = false;
+                    cbItazuraneko.Checked = false;
+                    cbZLib.Checked = false;
+                    cbNyaa.Checked = false;
+                    cbDLRaw.Checked = false;
+                }
+                else //if viewing visual novels
+                {
+                    cbRyuu.Checked = false;
+                    cbGGB.Checked = false;
+                    cbCrane.Checked = false;
+                    cbAnimeSharing.Checked = false;
+                    cbMiko.Checked = false;
+                }
             }
         }
-
         
 
 
@@ -987,9 +1007,10 @@ namespace LN_Finder
 
         private void changeMedium(object sender, EventArgs e)
         {
-            cbAll.Checked = false;
             if (sender.ToString().Contains("Light novels"))
             {
+                //if (settings.DToken != "") { cbDiscord.Checked = true; }
+                
                 btnLN.Enabled = false;
                 btnVN.Enabled = true;
 
@@ -1010,9 +1031,18 @@ namespace LN_Finder
                 cbCrane.Location = new Point(cbCrane.Location.X, cbCrane.Location.Y + 312);
                 cbAnimeSharing.Location = new Point(cbAnimeSharing.Location.X, cbAnimeSharing.Location.Y + 312);
                 cbMiko.Location = new Point(cbMiko.Location.X, cbMiko.Location.Y + 312);
+                if (cbDiscord.Checked == true & cbBoroboro.Checked == true && cbItazuraneko.Checked == true && cbZLib.Checked == true && cbNyaa.Checked == true && cbDLRaw.Checked == true)
+                {
+                    cbAll.Checked = true;
+                }
+                else if (cbDiscord.Checked == false || cbBoroboro.Checked == false || cbItazuraneko.Checked == false || cbZLib.Checked == false || cbNyaa.Checked == false || cbDLRaw.Checked == false)
+                {
+                    cbAll.Checked = false;
+                }
             }
-            else //961, 376
+            else //visual novels
             {
+                cbRyuu.Checked = true;
                 btnLN.Enabled = true;
                 btnVN.Enabled = false;
 
@@ -1034,6 +1064,38 @@ namespace LN_Finder
                 cbZLib.Visible = false;
                 cbNyaa.Visible = false;
                 cbDLRaw.Visible = false;
+                if (cbRyuu.Checked == true && cbCrane.Checked == true && cbGGB.Checked == true && cbAnimeSharing.Checked == true && cbMiko.Checked == true)
+                {
+                    cbAll.Checked = true;
+                }
+                else if (cbRyuu.Checked == false || cbCrane.Checked == false || cbGGB.Checked == false || cbAnimeSharing.Checked == false || cbMiko.Checked == false)
+                {
+                    cbAll.Checked = false;
+                }
+            }
+        }
+
+        private void cbAnyLN(object sender, EventArgs e)
+        {
+            if (cbDiscord.Checked == true & cbBoroboro.Checked == true && cbItazuraneko.Checked == true && cbZLib.Checked == true && cbNyaa.Checked == true && cbDLRaw.Checked == true)
+            {
+                cbAll.Checked = true;
+            }
+            else if (cbDiscord.Checked == false || cbBoroboro.Checked == false || cbItazuraneko.Checked == false || cbZLib.Checked == false || cbNyaa.Checked == false || cbDLRaw.Checked == false)
+            {
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbAnyVN(object sender, EventArgs e)
+        {
+            if (cbRyuu.Checked == true && cbCrane.Checked == true && cbGGB.Checked == true && cbAnimeSharing.Checked == true && cbMiko.Checked == true)
+            {
+                cbAll.Checked = true;
+            } 
+            else if (cbRyuu.Checked == false || cbCrane.Checked == false || cbGGB.Checked == false || cbAnimeSharing.Checked == false || cbMiko.Checked == false)
+            {
+                cbAll.Checked = false;
             }
         }
     }
