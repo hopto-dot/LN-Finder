@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cbDiscord = new System.Windows.Forms.CheckBox();
@@ -39,6 +40,14 @@
             this.columnLink = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.ColumnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyTitleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.resizeHeadersToFitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cbNyaa = new System.Windows.Forms.CheckBox();
@@ -46,8 +55,10 @@
             this.cbAll = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openSettingsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openProgramFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSettingsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.resetSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,10 +66,20 @@
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.changeResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.copyTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLinkOfSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkScraperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInternetConnectivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnVN = new System.Windows.Forms.Button();
+            this.btnLN = new System.Windows.Forms.Button();
+            this.cbRyuu = new System.Windows.Forms.CheckBox();
+            this.cbGGB = new System.Windows.Forms.CheckBox();
+            this.cbCrane = new System.Windows.Forms.CheckBox();
+            this.cbMiko = new System.Windows.Forms.CheckBox();
+            this.cbAnimeSharing = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +91,7 @@
             this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxSearch.Location = new System.Drawing.Point(97, 38);
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(803, 30);
+            this.tbxSearch.Size = new System.Drawing.Size(847, 30);
             this.tbxSearch.TabIndex = 0;
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
@@ -80,7 +101,7 @@
             this.btnSearch.Location = new System.Drawing.Point(12, 38);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(79, 30);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -89,10 +110,10 @@
             // 
             this.cbDiscord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDiscord.AutoSize = true;
-            this.cbDiscord.Location = new System.Drawing.Point(912, 64);
+            this.cbDiscord.Location = new System.Drawing.Point(960, 64);
             this.cbDiscord.Name = "cbDiscord";
             this.cbDiscord.Size = new System.Drawing.Size(76, 20);
-            this.cbDiscord.TabIndex = 3;
+            this.cbDiscord.TabIndex = 5;
             this.cbDiscord.Text = "Discord";
             this.cbDiscord.UseVisualStyleBackColor = true;
             this.cbDiscord.CheckedChanged += new System.EventHandler(this.cbDiscord_CheckedChanged);
@@ -103,10 +124,10 @@
             this.cbBoroboro.AutoSize = true;
             this.cbBoroboro.Checked = true;
             this.cbBoroboro.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbBoroboro.Location = new System.Drawing.Point(913, 90);
+            this.cbBoroboro.Location = new System.Drawing.Point(961, 90);
             this.cbBoroboro.Name = "cbBoroboro";
             this.cbBoroboro.Size = new System.Drawing.Size(86, 20);
-            this.cbBoroboro.TabIndex = 3;
+            this.cbBoroboro.TabIndex = 6;
             this.cbBoroboro.Text = "Boroboro";
             this.cbBoroboro.UseVisualStyleBackColor = true;
             // 
@@ -116,10 +137,10 @@
             this.cbItazuraneko.AutoSize = true;
             this.cbItazuraneko.Checked = true;
             this.cbItazuraneko.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbItazuraneko.Location = new System.Drawing.Point(915, 116);
+            this.cbItazuraneko.Location = new System.Drawing.Point(963, 116);
             this.cbItazuraneko.Name = "cbItazuraneko";
             this.cbItazuraneko.Size = new System.Drawing.Size(98, 20);
-            this.cbItazuraneko.TabIndex = 3;
+            this.cbItazuraneko.TabIndex = 7;
             this.cbItazuraneko.Text = "Itazuraneko";
             this.cbItazuraneko.UseVisualStyleBackColor = true;
             // 
@@ -129,10 +150,10 @@
             this.cbZLib.AutoSize = true;
             this.cbZLib.Checked = true;
             this.cbZLib.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbZLib.Location = new System.Drawing.Point(913, 142);
+            this.cbZLib.Location = new System.Drawing.Point(961, 142);
             this.cbZLib.Name = "cbZLib";
             this.cbZLib.Size = new System.Drawing.Size(59, 20);
-            this.cbZLib.TabIndex = 3;
+            this.cbZLib.TabIndex = 8;
             this.cbZLib.Text = "Z-Lib";
             this.cbZLib.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +172,6 @@
             // 
             // listView1
             // 
-            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -161,14 +181,16 @@
             this.collumnType,
             this.columnTitle,
             this.columnLink});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 74);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(888, 413);
-            this.listView1.TabIndex = 4;
+            this.listView1.ShowItemToolTips = true;
+            this.listView1.Size = new System.Drawing.Size(932, 475);
+            this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
@@ -179,16 +201,76 @@
             // 
             this.ColumnID.Text = "ID";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyTitleToolStripMenuItem1,
+            this.copyLinkToolStripMenuItem,
+            this.goToLinkToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.resizeHeadersToFitToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.clearListToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 136);
+            this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
+            // 
+            // copyTitleToolStripMenuItem1
+            // 
+            this.copyTitleToolStripMenuItem1.Name = "copyTitleToolStripMenuItem1";
+            this.copyTitleToolStripMenuItem1.Size = new System.Drawing.Size(212, 24);
+            this.copyTitleToolStripMenuItem1.Text = "Copy title";
+            this.copyTitleToolStripMenuItem1.Click += new System.EventHandler(this.copyTitleToolStripMenuItem1_Click);
+            // 
+            // copyLinkToolStripMenuItem
+            // 
+            this.copyLinkToolStripMenuItem.Name = "copyLinkToolStripMenuItem";
+            this.copyLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.copyLinkToolStripMenuItem.Text = "Copy link";
+            this.copyLinkToolStripMenuItem.Click += new System.EventHandler(this.copyLinkToolStripMenuItem_Click);
+            // 
+            // goToLinkToolStripMenuItem
+            // 
+            this.goToLinkToolStripMenuItem.Name = "goToLinkToolStripMenuItem";
+            this.goToLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.goToLinkToolStripMenuItem.Text = "Go to link";
+            this.goToLinkToolStripMenuItem.Click += new System.EventHandler(this.goToLinkToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(209, 6);
+            // 
+            // resizeHeadersToFitToolStripMenuItem
+            // 
+            this.resizeHeadersToFitToolStripMenuItem.Name = "resizeHeadersToFitToolStripMenuItem";
+            this.resizeHeadersToFitToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.resizeHeadersToFitToolStripMenuItem.Text = "Resize headers to fit";
+            this.resizeHeadersToFitToolStripMenuItem.Click += new System.EventHandler(this.resizeHeadersToFitToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(209, 6);
+            // 
+            // clearListToolStripMenuItem
+            // 
+            this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
+            this.clearListToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.clearListToolStripMenuItem.Text = "Clear list";
+            this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(908, 254);
+            this.numericUpDown1.Location = new System.Drawing.Point(956, 254);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(101, 28);
-            this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.TabIndex = 11;
             this.numericUpDown1.Value = new decimal(new int[] {
-            10,
+            11,
             0,
             0,
             0});
@@ -199,7 +281,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(904, 230);
+            this.label1.Location = new System.Drawing.Point(952, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 20);
             this.label1.TabIndex = 6;
@@ -209,10 +291,12 @@
             // 
             this.cbNyaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbNyaa.AutoSize = true;
-            this.cbNyaa.Location = new System.Drawing.Point(910, 168);
+            this.cbNyaa.Checked = true;
+            this.cbNyaa.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNyaa.Location = new System.Drawing.Point(958, 168);
             this.cbNyaa.Name = "cbNyaa";
             this.cbNyaa.Size = new System.Drawing.Size(62, 20);
-            this.cbNyaa.TabIndex = 3;
+            this.cbNyaa.TabIndex = 9;
             this.cbNyaa.Text = "Nyaa";
             this.cbNyaa.UseVisualStyleBackColor = true;
             // 
@@ -220,10 +304,12 @@
             // 
             this.cbDLRaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDLRaw.AutoSize = true;
-            this.cbDLRaw.Location = new System.Drawing.Point(911, 194);
+            this.cbDLRaw.Checked = true;
+            this.cbDLRaw.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDLRaw.Location = new System.Drawing.Point(959, 194);
             this.cbDLRaw.Name = "cbDLRaw";
             this.cbDLRaw.Size = new System.Drawing.Size(73, 20);
-            this.cbDLRaw.TabIndex = 3;
+            this.cbDLRaw.TabIndex = 10;
             this.cbDLRaw.Text = "DLRaw";
             this.cbDLRaw.UseVisualStyleBackColor = true;
             // 
@@ -231,10 +317,10 @@
             // 
             this.cbAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAll.AutoSize = true;
-            this.cbAll.Location = new System.Drawing.Point(913, 38);
+            this.cbAll.Location = new System.Drawing.Point(961, 38);
             this.cbAll.Name = "cbAll";
             this.cbAll.Size = new System.Drawing.Size(85, 20);
-            this.cbAll.TabIndex = 3;
+            this.cbAll.TabIndex = 4;
             this.cbAll.Text = "Select All";
             this.cbAll.UseVisualStyleBackColor = true;
             this.cbAll.CheckedChanged += new System.EventHandler(this.cbAll_CheckedChanged);
@@ -249,21 +335,30 @@
             this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 28);
-            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Size = new System.Drawing.Size(1079, 28);
+            this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openSettingsFileToolStripMenuItem,
             this.openProgramFolderToolStripMenuItem,
+            this.openSettingsFileToolStripMenuItem,
+            this.toolStripSeparator5,
             this.resetSettingsToolStripMenuItem,
             this.toolStripSeparator1,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openProgramFolderToolStripMenuItem
+            // 
+            this.openProgramFolderToolStripMenuItem.Name = "openProgramFolderToolStripMenuItem";
+            this.openProgramFolderToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.openProgramFolderToolStripMenuItem.Text = "Open program folder";
+            this.openProgramFolderToolStripMenuItem.ToolTipText = "Open the folder where the application is located";
+            this.openProgramFolderToolStripMenuItem.Click += new System.EventHandler(this.openProgramFolderToolStripMenuItem_Click);
             // 
             // openSettingsFileToolStripMenuItem
             // 
@@ -273,13 +368,17 @@
             this.openSettingsFileToolStripMenuItem.ToolTipText = "Open settings.json";
             this.openSettingsFileToolStripMenuItem.Click += new System.EventHandler(this.openSettingsFileToolStripMenuItem_Click);
             // 
-            // openProgramFolderToolStripMenuItem
+            // toolStripSeparator5
             // 
-            this.openProgramFolderToolStripMenuItem.Name = "openProgramFolderToolStripMenuItem";
-            this.openProgramFolderToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.openProgramFolderToolStripMenuItem.Text = "Open program folder";
-            this.openProgramFolderToolStripMenuItem.ToolTipText = "Open the folder where the application is located";
-            this.openProgramFolderToolStripMenuItem.Click += new System.EventHandler(this.openProgramFolderToolStripMenuItem_Click);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(231, 6);
+            // 
+            // resetSettingsToolStripMenuItem
+            // 
+            this.resetSettingsToolStripMenuItem.Name = "resetSettingsToolStripMenuItem";
+            this.resetSettingsToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.resetSettingsToolStripMenuItem.Text = "Reset settings";
+            this.resetSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetSettingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -298,7 +397,10 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeDiscordTokenToolStripMenuItem,
-            this.changeResultsToolStripMenuItem});
+            this.changeResultsToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.copyTitleToolStripMenuItem,
+            this.copyLinkOfSelectedToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
@@ -314,7 +416,6 @@
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
             this.toolStripTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
@@ -329,10 +430,31 @@
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
+            this.toolStripTextBox2.Text = "11";
             this.toolStripTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox2_KeyPress);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(235, 6);
+            // 
+            // copyTitleToolStripMenuItem
+            // 
+            this.copyTitleToolStripMenuItem.Enabled = false;
+            this.copyTitleToolStripMenuItem.Name = "copyTitleToolStripMenuItem";
+            this.copyTitleToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.copyTitleToolStripMenuItem.Text = "Copy title of selected";
+            this.copyTitleToolStripMenuItem.Click += new System.EventHandler(this.copyTitleToolStripMenuItem_Click);
+            // 
+            // copyLinkOfSelectedToolStripMenuItem
+            // 
+            this.copyLinkOfSelectedToolStripMenuItem.Enabled = false;
+            this.copyLinkOfSelectedToolStripMenuItem.Name = "copyLinkOfSelectedToolStripMenuItem";
+            this.copyLinkOfSelectedToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.copyLinkOfSelectedToolStripMenuItem.Text = "Copy link of selected";
+            this.copyLinkOfSelectedToolStripMenuItem.Click += new System.EventHandler(this.copyLinkOfSelectedToolStripMenuItem_Click);
             // 
             // debugToolStripMenuItem
             // 
@@ -359,19 +481,102 @@
             this.checkInternetConnectivityToolStripMenuItem.ToolTipText = "Check if you are connected to the internet";
             this.checkInternetConnectivityToolStripMenuItem.Click += new System.EventHandler(this.checkInternetConnectivityToolStripMenuItem_Click);
             // 
-            // resetSettingsToolStripMenuItem
+            // btnVN
             // 
-            this.resetSettingsToolStripMenuItem.Name = "resetSettingsToolStripMenuItem";
-            this.resetSettingsToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.resetSettingsToolStripMenuItem.Text = "Reset settings";
-            this.resetSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetSettingsToolStripMenuItem_Click);
+            this.btnVN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVN.Location = new System.Drawing.Point(956, 327);
+            this.btnVN.Name = "btnVN";
+            this.btnVN.Size = new System.Drawing.Size(102, 25);
+            this.btnVN.TabIndex = 14;
+            this.btnVN.Text = "Visual novels";
+            this.btnVN.UseVisualStyleBackColor = true;
+            this.btnVN.Click += new System.EventHandler(this.changeMedium);
+            // 
+            // btnLN
+            // 
+            this.btnLN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLN.Enabled = false;
+            this.btnLN.Location = new System.Drawing.Point(956, 297);
+            this.btnLN.Name = "btnLN";
+            this.btnLN.Size = new System.Drawing.Size(102, 25);
+            this.btnLN.TabIndex = 15;
+            this.btnLN.Text = "Light novels";
+            this.btnLN.UseVisualStyleBackColor = true;
+            this.btnLN.Click += new System.EventHandler(this.changeMedium);
+            // 
+            // cbRyuu
+            // 
+            this.cbRyuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbRyuu.AutoSize = true;
+            this.cbRyuu.Location = new System.Drawing.Point(961, 376);
+            this.cbRyuu.Name = "cbRyuu";
+            this.cbRyuu.Size = new System.Drawing.Size(102, 20);
+            this.cbRyuu.TabIndex = 16;
+            this.cbRyuu.Text = "Ryuugames";
+            this.cbRyuu.UseVisualStyleBackColor = true;
+            this.cbRyuu.Visible = false;
+            // 
+            // cbGGB
+            // 
+            this.cbGGB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbGGB.AutoSize = true;
+            this.cbGGB.Location = new System.Drawing.Point(961, 402);
+            this.cbGGB.Name = "cbGGB";
+            this.cbGGB.Size = new System.Drawing.Size(88, 20);
+            this.cbGGB.TabIndex = 17;
+            this.cbGGB.Text = "GGBases";
+            this.cbGGB.UseVisualStyleBackColor = true;
+            this.cbGGB.Visible = false;
+            // 
+            // cbCrane
+            // 
+            this.cbCrane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCrane.AutoSize = true;
+            this.cbCrane.Location = new System.Drawing.Point(963, 428);
+            this.cbCrane.Name = "cbCrane";
+            this.cbCrane.Size = new System.Drawing.Size(106, 20);
+            this.cbCrane.TabIndex = 17;
+            this.cbCrane.Text = "Crane Anime";
+            this.cbCrane.UseVisualStyleBackColor = true;
+            this.cbCrane.Visible = false;
+            // 
+            // cbMiko
+            // 
+            this.cbMiko.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbMiko.AutoSize = true;
+            this.cbMiko.Location = new System.Drawing.Point(958, 480);
+            this.cbMiko.Name = "cbMiko";
+            this.cbMiko.Size = new System.Drawing.Size(58, 20);
+            this.cbMiko.TabIndex = 17;
+            this.cbMiko.Text = "Miko";
+            this.cbMiko.UseVisualStyleBackColor = true;
+            this.cbMiko.Visible = false;
+            // 
+            // cbAnimeSharing
+            // 
+            this.cbAnimeSharing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAnimeSharing.AutoSize = true;
+            this.cbAnimeSharing.Location = new System.Drawing.Point(963, 454);
+            this.cbAnimeSharing.Name = "cbAnimeSharing";
+            this.cbAnimeSharing.Size = new System.Drawing.Size(113, 20);
+            this.cbAnimeSharing.TabIndex = 17;
+            this.cbAnimeSharing.Text = "AnimeSharing";
+            this.cbAnimeSharing.UseVisualStyleBackColor = true;
+            this.cbAnimeSharing.Visible = false;
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 515);
+            this.ClientSize = new System.Drawing.Size(1079, 577);
+            this.Controls.Add(this.cbAnimeSharing);
+            this.Controls.Add(this.cbMiko);
+            this.Controls.Add(this.cbCrane);
+            this.Controls.Add(this.cbGGB);
+            this.Controls.Add(this.cbRyuu);
+            this.Controls.Add(this.btnVN);
+            this.Controls.Add(this.btnLN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.listView1);
@@ -386,13 +591,14 @@
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(358, 184);
+            this.MinimumSize = new System.Drawing.Size(418, 357);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "LN Finder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -434,6 +640,25 @@
         private System.Windows.Forms.ToolStripMenuItem checkInternetConnectivityToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripMenuItem resetSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem copyTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyLinkOfSelectedToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyTitleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copyLinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToLinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem resizeHeadersToFitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Button btnVN;
+        private System.Windows.Forms.Button btnLN;
+        private System.Windows.Forms.CheckBox cbRyuu;
+        private System.Windows.Forms.CheckBox cbGGB;
+        private System.Windows.Forms.CheckBox cbCrane;
+        private System.Windows.Forms.CheckBox cbMiko;
+        private System.Windows.Forms.CheckBox cbAnimeSharing;
     }
 }
 

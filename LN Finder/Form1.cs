@@ -84,8 +84,8 @@ namespace LN_Finder
 
         private void startSearch(bool testScrapers = false)
         {
-            Text = testScrapers ? "LN Finder - Testing scrapers..." : "LN Finder - Searching...";
             if (tbxSearch.Text.Trim() == "") { return; }
+            Text = testScrapers ? "LN Finder - Testing scrapers..." : "LN Finder - Searching...";
 
             listView1.Items.Clear();
             links.Clear();
@@ -157,7 +157,19 @@ namespace LN_Finder
                 actions.Add(dlRawTask);
             }
 
-            Task.WaitAll(actions.ToArray());
+            try
+            {
+                Task.WaitAll(actions.ToArray());
+            } catch
+            {
+                foreach (var action in actions)
+                {
+                    if (action.Status != TaskStatus.RanToCompletion)
+                    {
+                        MessageBox.Show($"Scraper with ID #{action.Id} faulted.\n{action.Exception.InnerException.Message}\n{action.Exception.InnerException.StackTrace}", "An error occurred");
+                    }
+                }
+            }
 
             if (links.Count == 0)
             {
@@ -183,7 +195,7 @@ namespace LN_Finder
                 bool zlibWorking = links.Find(x => x.Type == "Z-Lib") == null ? false : true;
                 bool NyaaWorking = links.Find(x => x.Type == "Nyaa") == null ? false : true;
                 bool NyaaBigWorking = links.Find(x => x.Description.Contains("truckload")) == null ? false : true;
-                bool dlsiteWorking = links.Find(x => x.Type == "DLSite") == null ? false : true;
+                bool DLRawWorking = links.Find(x => x.Type == "DLRaw") == null ? false : true;
                 
                 string functionality =
                     $"Discord: {(discordWorking ? "Working" : "Not working")}\n" +
@@ -191,7 +203,7 @@ namespace LN_Finder
                     $"Itazuraneko: {(itazuraWorking ? "Working" : "Not working")}\n" +
                     $"Z-Library: {(zlibWorking ? "Working" : "Not working")}\n" +
                     $"Nyaa: {(NyaaWorking ? (NyaaBigWorking ? "Working" : "Partially working") : "Not working")}\n" +
-                    $"DLSite: {(discordWorking ? "Working" : "Not working")}\n";
+                    $"DLRaw: {(DLRawWorking ? "Working" : "Not working")}\n";
                 MessageBox.Show(functionality, "Scraper Functionality");
                 Text = "LN Finder";
             }
@@ -319,7 +331,7 @@ namespace LN_Finder
             Console.WriteLine();
         }
         private void searchDiscord()
-        {
+        {           
             bool inBookList = false;
             bool doneAllPages = false;
             int looped = 0;
@@ -609,7 +621,7 @@ namespace LN_Finder
                 if (!newLink.Description.Contains("[Novel]") || !newLink.Description.Contains(tbxSearch.Text)) { continue; }
                 newLink.Description = newLink.Description.Replace("[Novel]", "").Trim();
                 newLink.URL = HttpUtility.UrlDecode(result.ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes["href"].Value);
-                newLink.Type = "DLSite";
+                newLink.Type = "DLRaw";
                 newLink.ID = links.Count;
                 links.Add(newLink);
             }
@@ -754,6 +766,10 @@ namespace LN_Finder
         bool doubleClick = false;
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right) 
+            {
+
+            }
             if (firstOpen && !doubleClick) { MessageBox.Show("You can double click results to open their download page, and click on the list headers to sort results.", "LN Finder"); doubleClick = true; }
         }
 
@@ -772,6 +788,12 @@ namespace LN_Finder
                 cbZLib.Checked = true;
                 cbNyaa.Checked = true;
                 cbDLRaw.Checked = true;
+
+                cbRyuu.Checked = true;
+                cbGGB.Checked = true;
+                cbCrane.Checked = true;
+                cbAnimeSharing.Checked = true;
+                cbMiko.Checked = true;
             }
             else
             {
@@ -781,6 +803,12 @@ namespace LN_Finder
                 cbZLib.Checked = false;
                 cbNyaa.Checked = false;
                 cbDLRaw.Checked = false;
+
+                cbRyuu.Checked = false;
+                cbGGB.Checked = false;
+                cbCrane.Checked = false;
+                cbAnimeSharing.Checked = false;
+                cbMiko.Checked = false;
             }
         }
 
@@ -859,6 +887,10 @@ namespace LN_Finder
         {
             toolStripTextBox1.Text = settings.DToken;
             toolStripTextBox2.Text = numericUpDown1.Value.ToString();
+            if (listView1.SelectedItems.Count > 0) {
+                copyTitleToolStripMenuItem.Enabled = true;
+                copyLinkOfSelectedToolStripMenuItem.Enabled = true;
+            }
         }
         //test all scrapers click
         private void checkScraperToolStripMenuItem_Click(object sender, EventArgs e)
@@ -896,6 +928,112 @@ namespace LN_Finder
                 {
                     MessageBox.Show("Failed to reset your settings", "Reset failed");
                 }
+            }
+        }
+        //copy title of selected
+        private void copyTitleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(listView1.SelectedItems[0].SubItems[2].Text);
+        }
+        //copy link of selected
+        private void copyLinkOfSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(listView1.SelectedItems[0].SubItems[3].Text);
+        }
+
+        //list context menu
+        private void contextMenuStrip1_Opened(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                copyTitleToolStripMenuItem1.Enabled = false;
+                copyLinkToolStripMenuItem.Enabled = false;
+                goToLinkToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                copyTitleToolStripMenuItem1.Enabled = true;
+                copyLinkToolStripMenuItem.Enabled = true;
+                goToLinkToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        //resize to fit
+        private void resizeHeadersToFitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+        //clear list
+        private void clearListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void copyTitleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(listView1.SelectedItems[0].SubItems[2].Text);
+        }
+
+        private void copyLinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(listView1.SelectedItems[0].SubItems[3].Text);
+        }
+
+        private void goToLinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(listView1.SelectedItems[0].SubItems[3].Text);
+        }
+
+        private void changeMedium(object sender, EventArgs e)
+        {
+            cbAll.Checked = false;
+            if (sender.ToString().Contains("Light novels"))
+            {
+                btnLN.Enabled = false;
+                btnVN.Enabled = true;
+
+                cbDiscord.Visible = true;
+                cbBoroboro.Visible = true;
+                cbItazuraneko.Visible = true;
+                cbZLib.Visible = true;
+                cbNyaa.Visible = true;
+                cbDLRaw.Visible = true;
+
+                cbRyuu.Visible = false;
+                cbGGB.Visible = false;
+                cbCrane.Visible = false;
+                cbAnimeSharing.Visible = false;
+                cbMiko.Visible = false;
+                cbRyuu.Location = new Point(cbRyuu.Location.X, cbRyuu.Location.Y + 312);
+                cbGGB.Location = new Point(cbGGB.Location.X, cbGGB.Location.Y + 312);
+                cbCrane.Location = new Point(cbCrane.Location.X, cbCrane.Location.Y + 312);
+                cbAnimeSharing.Location = new Point(cbAnimeSharing.Location.X, cbAnimeSharing.Location.Y + 312);
+                cbMiko.Location = new Point(cbMiko.Location.X, cbMiko.Location.Y + 312);
+            }
+            else //961, 376
+            {
+                btnLN.Enabled = true;
+                btnVN.Enabled = false;
+
+                cbRyuu.Visible = true;
+                cbGGB.Visible = true;
+                cbCrane.Visible = true;
+                cbAnimeSharing.Visible = true;
+                cbMiko.Visible = true;
+                cbRyuu.Location = new Point(cbRyuu.Location.X, cbRyuu.Location.Y - 312);
+                cbGGB.Location = new Point(cbGGB.Location.X, cbGGB.Location.Y - 312);
+                cbCrane.Location = new Point(cbCrane.Location.X, cbCrane.Location.Y - 312);
+                cbAnimeSharing.Location = new Point(cbAnimeSharing.Location.X, cbAnimeSharing.Location.Y - 312);
+                cbMiko.Location = new Point(cbMiko.Location.X, cbMiko.Location.Y - 312);
+
+
+                cbDiscord.Visible = false;
+                cbBoroboro.Visible = false;
+                cbItazuraneko.Visible = false;
+                cbZLib.Visible = false;
+                cbNyaa.Visible = false;
+                cbDLRaw.Visible = false;
             }
         }
     }
