@@ -79,6 +79,9 @@
             this.cbCrane = new System.Windows.Forms.CheckBox();
             this.cbMiko = new System.Windows.Forms.CheckBox();
             this.cbAnimeSharing = new System.Windows.Forms.CheckBox();
+            this.bigGUIScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.browseVisualNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -89,9 +92,9 @@
             this.tbxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.Location = new System.Drawing.Point(97, 38);
+            this.tbxSearch.Location = new System.Drawing.Point(109, 38);
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(847, 30);
+            this.tbxSearch.Size = new System.Drawing.Size(827, 30);
             this.tbxSearch.TabIndex = 0;
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
@@ -110,7 +113,7 @@
             // 
             this.cbDiscord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDiscord.AutoSize = true;
-            this.cbDiscord.Location = new System.Drawing.Point(960, 64);
+            this.cbDiscord.Location = new System.Drawing.Point(952, 64);
             this.cbDiscord.Name = "cbDiscord";
             this.cbDiscord.Size = new System.Drawing.Size(76, 20);
             this.cbDiscord.TabIndex = 5;
@@ -125,7 +128,7 @@
             this.cbBoroboro.AutoSize = true;
             this.cbBoroboro.Checked = true;
             this.cbBoroboro.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbBoroboro.Location = new System.Drawing.Point(961, 90);
+            this.cbBoroboro.Location = new System.Drawing.Point(953, 90);
             this.cbBoroboro.Name = "cbBoroboro";
             this.cbBoroboro.Size = new System.Drawing.Size(86, 20);
             this.cbBoroboro.TabIndex = 6;
@@ -139,7 +142,7 @@
             this.cbItazuraneko.AutoSize = true;
             this.cbItazuraneko.Checked = true;
             this.cbItazuraneko.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbItazuraneko.Location = new System.Drawing.Point(963, 116);
+            this.cbItazuraneko.Location = new System.Drawing.Point(955, 116);
             this.cbItazuraneko.Name = "cbItazuraneko";
             this.cbItazuraneko.Size = new System.Drawing.Size(98, 20);
             this.cbItazuraneko.TabIndex = 7;
@@ -153,7 +156,7 @@
             this.cbZLib.AutoSize = true;
             this.cbZLib.Checked = true;
             this.cbZLib.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbZLib.Location = new System.Drawing.Point(961, 142);
+            this.cbZLib.Location = new System.Drawing.Point(953, 142);
             this.cbZLib.Name = "cbZLib";
             this.cbZLib.Size = new System.Drawing.Size(59, 20);
             this.cbZLib.TabIndex = 8;
@@ -180,20 +183,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.AutoArrange = false;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnID,
             this.collumnType,
             this.columnTitle,
             this.columnLink});
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 74);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
+            this.listView1.Scrollable = false;
             this.listView1.ShowItemToolTips = true;
-            this.listView1.Size = new System.Drawing.Size(932, 439);
+            this.listView1.Size = new System.Drawing.Size(924, 423);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -269,12 +274,12 @@
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(956, 254);
+            this.numericUpDown1.Location = new System.Drawing.Point(948, 254);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(101, 28);
             this.numericUpDown1.TabIndex = 11;
             this.numericUpDown1.Value = new decimal(new int[] {
-            11,
+            10,
             0,
             0,
             0});
@@ -285,7 +290,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(952, 230);
+            this.label1.Location = new System.Drawing.Point(944, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 20);
             this.label1.TabIndex = 6;
@@ -297,7 +302,7 @@
             this.cbNyaa.AutoSize = true;
             this.cbNyaa.Checked = true;
             this.cbNyaa.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbNyaa.Location = new System.Drawing.Point(958, 168);
+            this.cbNyaa.Location = new System.Drawing.Point(950, 168);
             this.cbNyaa.Name = "cbNyaa";
             this.cbNyaa.Size = new System.Drawing.Size(62, 20);
             this.cbNyaa.TabIndex = 9;
@@ -311,7 +316,7 @@
             this.cbDLRaw.AutoSize = true;
             this.cbDLRaw.Checked = true;
             this.cbDLRaw.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDLRaw.Location = new System.Drawing.Point(959, 194);
+            this.cbDLRaw.Location = new System.Drawing.Point(951, 194);
             this.cbDLRaw.Name = "cbDLRaw";
             this.cbDLRaw.Size = new System.Drawing.Size(73, 20);
             this.cbDLRaw.TabIndex = 10;
@@ -323,7 +328,7 @@
             // 
             this.cbAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAll.AutoSize = true;
-            this.cbAll.Location = new System.Drawing.Point(961, 38);
+            this.cbAll.Location = new System.Drawing.Point(953, 38);
             this.cbAll.Name = "cbAll";
             this.cbAll.Size = new System.Drawing.Size(85, 20);
             this.cbAll.TabIndex = 4;
@@ -341,7 +346,7 @@
             this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1079, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1071, 28);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -468,7 +473,10 @@
             // 
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.checkScraperToolStripMenuItem,
-            this.checkInternetConnectivityToolStripMenuItem});
+            this.checkInternetConnectivityToolStripMenuItem,
+            this.bigGUIScaleToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.browseVisualNovelsToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -492,7 +500,7 @@
             // btnVN
             // 
             this.btnVN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVN.Location = new System.Drawing.Point(956, 327);
+            this.btnVN.Location = new System.Drawing.Point(948, 327);
             this.btnVN.Name = "btnVN";
             this.btnVN.Size = new System.Drawing.Size(102, 25);
             this.btnVN.TabIndex = 14;
@@ -504,7 +512,7 @@
             // 
             this.btnLN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLN.Enabled = false;
-            this.btnLN.Location = new System.Drawing.Point(956, 297);
+            this.btnLN.Location = new System.Drawing.Point(948, 297);
             this.btnLN.Name = "btnLN";
             this.btnLN.Size = new System.Drawing.Size(102, 25);
             this.btnLN.TabIndex = 15;
@@ -516,7 +524,7 @@
             // 
             this.cbRyuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbRyuu.AutoSize = true;
-            this.cbRyuu.Location = new System.Drawing.Point(961, 376);
+            this.cbRyuu.Location = new System.Drawing.Point(953, 376);
             this.cbRyuu.Name = "cbRyuu";
             this.cbRyuu.Size = new System.Drawing.Size(102, 20);
             this.cbRyuu.TabIndex = 16;
@@ -529,7 +537,7 @@
             // 
             this.cbGGB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGGB.AutoSize = true;
-            this.cbGGB.Location = new System.Drawing.Point(960, 428);
+            this.cbGGB.Location = new System.Drawing.Point(952, 428);
             this.cbGGB.Name = "cbGGB";
             this.cbGGB.Size = new System.Drawing.Size(88, 20);
             this.cbGGB.TabIndex = 17;
@@ -542,7 +550,7 @@
             // 
             this.cbCrane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCrane.AutoSize = true;
-            this.cbCrane.Location = new System.Drawing.Point(963, 402);
+            this.cbCrane.Location = new System.Drawing.Point(955, 402);
             this.cbCrane.Name = "cbCrane";
             this.cbCrane.Size = new System.Drawing.Size(106, 20);
             this.cbCrane.TabIndex = 17;
@@ -555,7 +563,7 @@
             // 
             this.cbMiko.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbMiko.AutoSize = true;
-            this.cbMiko.Location = new System.Drawing.Point(958, 480);
+            this.cbMiko.Location = new System.Drawing.Point(950, 480);
             this.cbMiko.Name = "cbMiko";
             this.cbMiko.Size = new System.Drawing.Size(58, 20);
             this.cbMiko.TabIndex = 17;
@@ -568,7 +576,7 @@
             // 
             this.cbAnimeSharing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAnimeSharing.AutoSize = true;
-            this.cbAnimeSharing.Location = new System.Drawing.Point(962, 454);
+            this.cbAnimeSharing.Location = new System.Drawing.Point(954, 454);
             this.cbAnimeSharing.Name = "cbAnimeSharing";
             this.cbAnimeSharing.Size = new System.Drawing.Size(113, 20);
             this.cbAnimeSharing.TabIndex = 17;
@@ -577,12 +585,31 @@
             this.cbAnimeSharing.Visible = false;
             this.cbAnimeSharing.Click += new System.EventHandler(this.cbAnyVN);
             // 
+            // bigGUIScaleToolStripMenuItem
+            // 
+            this.bigGUIScaleToolStripMenuItem.Name = "bigGUIScaleToolStripMenuItem";
+            this.bigGUIScaleToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.bigGUIScaleToolStripMenuItem.Text = "Increase GUI scale";
+            this.bigGUIScaleToolStripMenuItem.Click += new System.EventHandler(this.bigGUIScaleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
+            // 
+            // browseVisualNovelsToolStripMenuItem
+            // 
+            this.browseVisualNovelsToolStripMenuItem.Name = "browseVisualNovelsToolStripMenuItem";
+            this.browseVisualNovelsToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.browseVisualNovelsToolStripMenuItem.Text = "Browse visual novels";
+            this.browseVisualNovelsToolStripMenuItem.Click += new System.EventHandler(this.browseVisualNovelsToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 525);
+            this.ClientSize = new System.Drawing.Size(1071, 509);
             this.Controls.Add(this.cbAnimeSharing);
             this.Controls.Add(this.cbMiko);
             this.Controls.Add(this.cbGGB);
@@ -604,12 +631,11 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.cbCrane);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(418, 357);
+            this.MinimumSize = new System.Drawing.Size(600, 410);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "LN Finder";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -672,6 +698,9 @@
         private System.Windows.Forms.CheckBox cbCrane;
         private System.Windows.Forms.CheckBox cbMiko;
         private System.Windows.Forms.CheckBox cbAnimeSharing;
+        private System.Windows.Forms.ToolStripMenuItem bigGUIScaleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem browseVisualNovelsToolStripMenuItem;
     }
 }
 

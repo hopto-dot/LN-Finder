@@ -46,6 +46,7 @@ namespace LN_Finder
         Settings settings = new Settings();
         List<Link> links = new List<Link>();
         bool firstOpen = false;
+        bool clickedVN = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -57,6 +58,7 @@ namespace LN_Finder
             {
                 cbAll.Checked = true;
             }
+            Size = new Size(1300, 800);
         }
 
         private void loadSettings()
@@ -989,7 +991,6 @@ namespace LN_Finder
             listView1.Items.Clear();
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
         private void copyTitleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView1.SelectedItems[0].SubItems[2].Text);
@@ -1010,7 +1011,7 @@ namespace LN_Finder
             if (sender.ToString().Contains("Light novels"))
             {
                 //if (settings.DToken != "") { cbDiscord.Checked = true; }
-                
+
                 btnLN.Enabled = false;
                 btnVN.Enabled = true;
 
@@ -1042,6 +1043,9 @@ namespace LN_Finder
             }
             else //visual novels
             {
+                if (clickedVN == false) { MessageBox.Show("This feature doesn't work yet!", "Search Visual Novels", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                clickedVN = true;
+
                 cbRyuu.Checked = true;
                 btnLN.Enabled = true;
                 btnVN.Enabled = false;
@@ -1097,6 +1101,70 @@ namespace LN_Finder
             {
                 cbAll.Checked = false;
             }
+        }
+
+        private void bigGUIScaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bigGUIScaleToolStripMenuItem.Enabled = false;
+
+            menuStrip1.Font = new Font(menuStrip1.Font.Name, 11);
+            //listView1.Size = new Size(912, 436);
+            listView1.Size = new Size(listView1.Size.Width - 19, listView1.Size.Height);
+            listView1.Location = new Point(12, 77);
+            btnSearch.Font = new Font(btnSearch.Font.Name, 12);
+            btnSearch.Location = new Point(12, 38);
+            btnSearch.Size = new Size(90, 36);
+            tbxSearch.Location = new Point(109, 39);
+            //tbxSearch.Size = new Size(815, 29);
+            tbxSearch.Size = new Size(tbxSearch.Size.Width - 19, 29);
+            tbxSearch.Font = new Font(tbxSearch.Font.Name, 14);
+
+            cbAll.Location = new Point(cbAll.Location.X - 5, cbAll.Location.Y);
+            cbDiscord.Location = new Point(cbDiscord.Location.X - 9, cbDiscord.Location.Y);
+            cbBoroboro.Location = new Point(cbBoroboro.Location.X - 6, cbBoroboro.Location.Y);
+            cbItazuraneko.Location = new Point(cbItazuraneko.Location.X - 3, cbItazuraneko.Location.Y);
+            cbZLib.Location = new Point(cbZLib.Location.X - 15, cbZLib.Location.Y);
+            cbNyaa.Location = new Point(cbNyaa.Location.X - 15, cbNyaa.Location.Y);
+            cbDLRaw.Location = new Point(cbDLRaw.Location.X - 11, cbDLRaw.Location.Y);
+
+            cbRyuu.Location = new Point(cbRyuu.Location.X + 1, cbRyuu.Location.Y);
+            cbCrane.Location = new Point(cbCrane.Location.X + 4, cbCrane.Location.Y);
+            cbGGB.Location = new Point(cbGGB.Location.X - 7, cbGGB.Location.Y);
+            cbAnimeSharing.Location = new Point(cbAnimeSharing.Location.X + 7, cbAnimeSharing.Location.Y);
+            cbMiko.Location = new Point(cbMiko.Location.X - 14, cbMiko.Location.Y);
+
+            cbAll.Font = new Font(cbAll.Font.Name, 11);
+            cbDiscord.Font = new Font(cbDiscord.Font.Name, 11);
+            cbBoroboro.Font = new Font(cbBoroboro.Font.Name, 11);
+            cbItazuraneko.Font = new Font(cbItazuraneko.Font.Name, 11);
+            cbZLib.Font = new Font(cbZLib.Font.Name, 11);
+            cbNyaa.Font = new Font(cbNyaa.Font.Name, 11);
+            cbDLRaw.Font = new Font(cbDLRaw.Font.Name, 11);
+            cbRyuu.Font = new Font(cbRyuu.Font.Name, 11);
+            cbCrane.Font = new Font(cbCrane.Font.Name, 11);
+            cbGGB.Font = new Font(cbGGB.Font.Name, 11);
+            cbAnimeSharing.Font = new Font(cbAnimeSharing.Font.Name, 11);
+            cbMiko.Font = new Font(cbMiko.Font.Name, 11);
+
+            label1.Location = new Point(label1.Location.X - 26, label1.Location.Y - 4);
+            label1.Font = new Font(label1.Font.Name, 12);
+            numericUpDown1.Location = new Point(numericUpDown1.Location.X - 26, numericUpDown1.Location.Y);
+            numericUpDown1.Size = new Size(numericUpDown1.Size.Width + 40, numericUpDown1.Size.Height);
+            numericUpDown1.Font = new Font(numericUpDown1.Font.Name, 13);
+
+            btnLN.Location = new Point(btnLN.Location.X - 26, btnLN.Location.Y);
+            btnLN.Size = new Size(btnLN.Width + 40, btnLN.Height + 10);
+            btnLN.Font = new Font(btnLN.Font.Name, 11);
+            btnVN.Location = new Point(btnVN.Location.X - 26, btnVN.Location.Y + 10);
+            btnVN.Size = new Size(btnVN.Width + 40, btnVN.Height + 10);
+            btnVN.Font = new Font(btnVN.Font.Name, 11);
+            MinimumSize = new Size(MinimumSize.Width + 30, MinimumSize.Height + 17);
+            if (numericUpDown1.Value == 10) { numericUpDown1.Value = 12; }
+        }
+
+        private void browseVisualNovelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.amazon.co.jp/s?i=stripbooks&bbn=2189055051&rh=n%3A2189055051%2Cp_n_condition-type%3A680578011%2Cp_n_publication_date%3A82838051&s=date-desc-rank&dc&ds=v1%3AVj1grqE9nzMKA4z3wRUA9PHofS9HvSAxuEWp424M0IE&rnid=82836051&ref=sr_nr_p_n_publication_date_8");
         }
     }
 }
