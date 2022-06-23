@@ -119,10 +119,17 @@ namespace LN_Finder
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            startSearch();
+            if (btnLN.Enabled == false)  //light novel search selected
+            {
+                startNovelSearch();
+            }
+            else //visual novel search selected
+            {
+
+            }
         }
 
-        private void startSearch(bool testScrapers = false)
+        private void startNovelSearch(bool testScrapers = false)
         {
             if (tbxSearch.Text.Trim() == "") { return; }
             Text = testScrapers ? "LN Finder - Testing scrapers..." : "LN Finder - Searching...";
@@ -926,7 +933,7 @@ namespace LN_Finder
 
         private void tbxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r') { startSearch(); }
+            if (e.KeyChar == '\r') { startNovelSearch(); }
         }
 
         //select all
@@ -1062,7 +1069,7 @@ namespace LN_Finder
         private void checkScraperToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tbxSearch.Text = "ソードアート・オンライン";
-            startSearch(true);
+            startNovelSearch(true);
 
             tbxSearch.Text = "";
         }

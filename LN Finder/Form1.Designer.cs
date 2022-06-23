@@ -104,7 +104,6 @@
             this.tbxSearch.Name = "tbxSearch";
             this.tbxSearch.Size = new System.Drawing.Size(839, 30);
             this.tbxSearch.TabIndex = 0;
-            this.tbxSearch.Text = "お隣の天使様にいつの間にか駄目人間にされていた件";
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
             // btnSearch
@@ -135,8 +134,6 @@
             // 
             this.cbBoroboro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbBoroboro.AutoSize = true;
-            this.cbBoroboro.Checked = true;
-            this.cbBoroboro.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbBoroboro.Location = new System.Drawing.Point(953, 90);
             this.cbBoroboro.Name = "cbBoroboro";
             this.cbBoroboro.Size = new System.Drawing.Size(86, 20);
@@ -161,8 +158,6 @@
             // 
             this.cbZLib.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbZLib.AutoSize = true;
-            this.cbZLib.Checked = true;
-            this.cbZLib.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbZLib.Location = new System.Drawing.Point(953, 142);
             this.cbZLib.Name = "cbZLib";
             this.cbZLib.Size = new System.Drawing.Size(59, 20);
@@ -328,8 +323,6 @@
             // 
             this.cbNyaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbNyaa.AutoSize = true;
-            this.cbNyaa.Checked = true;
-            this.cbNyaa.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbNyaa.Location = new System.Drawing.Point(950, 168);
             this.cbNyaa.Name = "cbNyaa";
             this.cbNyaa.Size = new System.Drawing.Size(62, 20);
@@ -342,8 +335,6 @@
             // 
             this.cbDLRaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDLRaw.AutoSize = true;
-            this.cbDLRaw.Checked = true;
-            this.cbDLRaw.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDLRaw.Location = new System.Drawing.Point(951, 194);
             this.cbDLRaw.Name = "cbDLRaw";
             this.cbDLRaw.Size = new System.Drawing.Size(73, 20);
@@ -458,7 +449,6 @@
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
             this.toolStripTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
@@ -474,7 +464,6 @@
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
             this.toolStripTextBox2.Text = "11";
