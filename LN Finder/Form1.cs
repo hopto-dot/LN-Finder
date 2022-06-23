@@ -38,6 +38,9 @@ namespace LN_Finder
             public string URL = "";
             public string Description = "";
 
+            public string messageURL = "";
+            public string pointerURL = "";
+
             public Link()
             {
                 Description = "              ";
@@ -46,7 +49,7 @@ namespace LN_Finder
         Settings settings = new Settings();
         List<Link> links = new List<Link>();
         bool firstOpen = false;
-        bool clickedVN = false;
+        bool clickedVN = true;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -401,8 +404,13 @@ namespace LN_Finder
                                 temp = temp.Substring(0, temp.IndexOf("\n"));
                             } catch { }
                             Link link = new Link();
+                            link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
                             link.Type = "Discord";
                             link.URL = temp;
+
+                            //temp = msgContent;
+                            //temp = temp.Substring(temp.IndexOf(tbxSearch.Text));
+                            //temp = temp.Substring(0, temp.IndexOf("\n"));
 
                             link.Description = msgContent;
                             bool startReached = false;
@@ -414,8 +422,13 @@ namespace LN_Finder
                                 if (indexChar == "\n") { startReached = true; break; };
                                 contentIndex--;
                             }
-                            link.Description = link.Description.Substring(contentIndex, link.Description.IndexOf(link.URL) - contentIndex).Trim();
+                                link.Description = link.Description.Substring(contentIndex).Trim(); //, link.Description.IndexOf(link.URL) - contentIndex
+                            try
+                            {
+                                link.Description = link.Description.Substring(0, link.Description.IndexOf("\n"));
+                            } catch { }
                             link.ID = links.Count;
+                            link.pointerURL = link.URL;
                             links.Add(link);
                             continue;
                         } catch
@@ -425,6 +438,7 @@ namespace LN_Finder
                             link.URL = "https://discord.com/channels/617136488840429598/882987261627617310"; //+ result.Children().ToList()[0].Children().ToList()[0].Value<String>();
                             link.Description = "List of downloads";
                             link.ID = links.Count;
+                            link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
                             links.Add(link);
                             continue;
                         }
@@ -465,7 +479,27 @@ namespace LN_Finder
 
                         link.URL = newLink;
                         link.Type = "Discord";
-                        link.Description = msgContent.Replace(newLink, "").Trim().Replace("*", "");
+                        link.Description = msgContent;//.Replace(newLink, "").Trim().Replace("*", "");
+                        link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
+
+                        ////
+                        bool startReached = false;
+                        int contentIndex = msgContent.IndexOf(tbxSearch.Text);
+                        while (startReached == false)
+                        {
+                            if (contentIndex == 0) { startReached = true; break; }
+                            string indexChar = msgContent.Substring(contentIndex, 1);
+                            if (indexChar == "\n") { startReached = true; break; };
+                            contentIndex--;
+                        }
+                        link.Description = link.Description.Substring(contentIndex).Trim(); //, link.Description.IndexOf(link.URL) - contentIndex
+                        try
+                        {
+                            link.Description = link.Description.Substring(0, link.Description.IndexOf("\n"));
+                        }
+                        catch { }
+                        ////
+
                         link.ID = links.Count();
                         links.Add(link);
                     }
@@ -473,27 +507,53 @@ namespace LN_Finder
                     {
                         try
                         {
+                            int attachmentCount = 0;
+                            Console.WriteLine();
                             foreach (var attachment in result.Children().ToList()[5].Children().ToList()[0])
                             {
                                 if (attachment.Children().Count() == 0) { continue; }
 
                                 msgAttachment = attachment.Children().ToList()[3].Children().ToList()[0].Value<String>();
-                                String[] validAttachments = { ".epub", ".azw3", ".zip", ".rar" };
+                                String[] validAttachments = { ".epub", ".azw3", ".zip", ".rar", ".pdf" };
                                 bool valid = false;
                                 foreach (string validAttachment in validAttachments)
                                 {
-                                    if (msgAttachment.Contains(validAttachment)) { valid = true; break; }
+                                    if (msgAttachment.Contains(validAttachment)) { valid = true; attachmentCount++; break; }
                                 }
                                 if (!valid) { continue; }
 
+                                //Link link = new Link();
+                                //link.URL = msgAttachment;
+                                //link.Description = msgContent.Replace(msgAttachment, "").Trim().Replace("*", "");
+                                //link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
+                                //link.Type = "Discord";
+                                //link.ID = links.Count();
+                                //links.Add(link);
+                                //Console.WriteLine();
+                            }
+
+                            if (attachmentCount == 1)
+                            {
                                 Link link = new Link();
                                 link.URL = msgAttachment;
                                 link.Description = msgContent.Replace(msgAttachment, "").Trim().Replace("*", "");
+                                link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
+                                link.Type = "Discord (download)";
+                                link.ID = links.Count();
+                                links.Add(link);
+                            }
+                            else if (attachmentCount > 1)
+                            {
+                                Link link = new Link();
+                                link.URL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>();
+                                link.Description = msgContent.Replace(msgAttachment, "").Trim().Replace("*", "");
+                                link.messageURL = "https://discord.com/channels/617136488840429598/819968020012204112/" + result.Children().ToList()[0].ToList()[0].Value<String>(); //
                                 link.Type = "Discord";
                                 link.ID = links.Count();
                                 links.Add(link);
-                                Console.WriteLine();
                             }
+                            
+                            Console.WriteLine();
                         }
                         catch
                         {
@@ -525,6 +585,26 @@ namespace LN_Finder
                 newLink.ID = links.Count();
                 links.Add(newLink);
             }
+
+            bool foundResults = links.Count == 0 ? false : true;
+            List<Link> toRemove = new List<Link>();
+            foreach (Link link in links.Where(l => l.Type.Contains("Discord")))
+            {
+                foreach (Link link2 in links.Where(l => l.Type.Contains("Discord")))
+                {
+                    if (link == link2) { continue; }
+                    if ( (!(link.pointerURL == "" && link2.messageURL == "")) && (link.pointerURL == link2.messageURL) )
+                    {
+                        toRemove.Add(link);
+                    }
+                }
+            }
+            foreach (Link remove in toRemove)
+            {
+                links.Remove(remove);
+            }
+            if (links.Count == 0 && foundResults == true) { MessageBox.Show("Something went wrong with removing duplicate download links", "Error"); }
+
             Console.WriteLine("Done!");
         }
         private void searchNyaa()
@@ -978,6 +1058,29 @@ namespace LN_Finder
                 copyLinkToolStripMenuItem.Enabled = true;
                 goToLinkToolStripMenuItem.Enabled = true;
             }
+
+            try
+            {
+                if (links.FindAll(s => s.ID == int.Parse(listView1.SelectedItems[0].SubItems[0].Text))[0].Type.Contains("Discord"))
+                {
+                    goToMessageToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    goToMessageToolStripMenuItem.Visible = false;
+                }
+            } catch
+            {
+                goToMessageToolStripMenuItem.Visible = false;
+            }
+            
+            if (listView1.Items.Count == 0)
+            {
+                clearListToolStripMenuItem.Enabled = false;
+            } else
+            {
+                clearListToolStripMenuItem.Enabled = true;
+            }
         }
 
         //resize to fit
@@ -1116,7 +1219,7 @@ namespace LN_Finder
             btnSearch.Size = new Size(90, 36);
             tbxSearch.Location = new Point(109, 39);
             //tbxSearch.Size = new Size(815, 29);
-            tbxSearch.Size = new Size(tbxSearch.Size.Width - 19, 29);
+            tbxSearch.Size = new Size(tbxSearch.Size.Width - 32, 29);
             tbxSearch.Font = new Font(tbxSearch.Font.Name, 14);
 
             cbAll.Location = new Point(cbAll.Location.X - 5, cbAll.Location.Y);
@@ -1165,6 +1268,11 @@ namespace LN_Finder
         private void browseVisualNovelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.amazon.co.jp/s?i=stripbooks&bbn=2189055051&rh=n%3A2189055051%2Cp_n_condition-type%3A680578011%2Cp_n_publication_date%3A82838051&s=date-desc-rank&dc&ds=v1%3AVj1grqE9nzMKA4z3wRUA9PHofS9HvSAxuEWp424M0IE&rnid=82836051&ref=sr_nr_p_n_publication_date_8");
+        }
+
+        private void goToMessageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(links.FindAll(s => s.ID.ToString() == listView1.SelectedItems[0].SubItems[0].Text.ToString())[0].messageURL);
         }
     }
 }

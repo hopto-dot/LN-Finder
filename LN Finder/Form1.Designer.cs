@@ -72,6 +72,9 @@
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkScraperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInternetConnectivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bigGUIScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.browseVisualNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVN = new System.Windows.Forms.Button();
             this.btnLN = new System.Windows.Forms.Button();
             this.cbRyuu = new System.Windows.Forms.CheckBox();
@@ -79,9 +82,8 @@
             this.cbCrane = new System.Windows.Forms.CheckBox();
             this.cbMiko = new System.Windows.Forms.CheckBox();
             this.cbAnimeSharing = new System.Windows.Forms.CheckBox();
-            this.bigGUIScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.browseVisualNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.goToMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -92,10 +94,11 @@
             this.tbxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.Location = new System.Drawing.Point(109, 38);
+            this.tbxSearch.Location = new System.Drawing.Point(97, 38);
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(827, 30);
+            this.tbxSearch.Size = new System.Drawing.Size(839, 30);
             this.tbxSearch.TabIndex = 0;
+            this.tbxSearch.Text = "お隣の天使様にいつの間にか駄目人間にされていた件";
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
             // btnSearch
@@ -126,8 +129,6 @@
             // 
             this.cbBoroboro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbBoroboro.AutoSize = true;
-            this.cbBoroboro.Checked = true;
-            this.cbBoroboro.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbBoroboro.Location = new System.Drawing.Point(953, 90);
             this.cbBoroboro.Name = "cbBoroboro";
             this.cbBoroboro.Size = new System.Drawing.Size(86, 20);
@@ -140,8 +141,6 @@
             // 
             this.cbItazuraneko.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbItazuraneko.AutoSize = true;
-            this.cbItazuraneko.Checked = true;
-            this.cbItazuraneko.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbItazuraneko.Location = new System.Drawing.Point(955, 116);
             this.cbItazuraneko.Name = "cbItazuraneko";
             this.cbItazuraneko.Size = new System.Drawing.Size(98, 20);
@@ -154,8 +153,6 @@
             // 
             this.cbZLib.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbZLib.AutoSize = true;
-            this.cbZLib.Checked = true;
-            this.cbZLib.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbZLib.Location = new System.Drawing.Point(953, 142);
             this.cbZLib.Name = "cbZLib";
             this.cbZLib.Size = new System.Drawing.Size(59, 20);
@@ -196,7 +193,6 @@
             this.listView1.Location = new System.Drawing.Point(12, 74);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Scrollable = false;
             this.listView1.ShowItemToolTips = true;
             this.listView1.Size = new System.Drawing.Size(924, 423);
             this.listView1.TabIndex = 3;
@@ -216,13 +212,15 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyTitleToolStripMenuItem1,
             this.copyLinkToolStripMenuItem,
+            this.toolStripSeparator7,
             this.goToLinkToolStripMenuItem,
+            this.goToMessageToolStripMenuItem,
             this.toolStripSeparator4,
             this.resizeHeadersToFitToolStripMenuItem,
             this.toolStripSeparator3,
             this.clearListToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 194);
             this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
             // 
             // copyTitleToolStripMenuItem1
@@ -243,7 +241,7 @@
             // 
             this.goToLinkToolStripMenuItem.Name = "goToLinkToolStripMenuItem";
             this.goToLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
-            this.goToLinkToolStripMenuItem.Text = "Go to link";
+            this.goToLinkToolStripMenuItem.Text = "Go to download";
             this.goToLinkToolStripMenuItem.Click += new System.EventHandler(this.goToLinkToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
@@ -300,8 +298,6 @@
             // 
             this.cbNyaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbNyaa.AutoSize = true;
-            this.cbNyaa.Checked = true;
-            this.cbNyaa.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbNyaa.Location = new System.Drawing.Point(950, 168);
             this.cbNyaa.Name = "cbNyaa";
             this.cbNyaa.Size = new System.Drawing.Size(62, 20);
@@ -314,8 +310,6 @@
             // 
             this.cbDLRaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDLRaw.AutoSize = true;
-            this.cbDLRaw.Checked = true;
-            this.cbDLRaw.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDLRaw.Location = new System.Drawing.Point(951, 194);
             this.cbDLRaw.Name = "cbDLRaw";
             this.cbDLRaw.Size = new System.Drawing.Size(73, 20);
@@ -497,6 +491,25 @@
             this.checkInternetConnectivityToolStripMenuItem.ToolTipText = "Check if you are connected to the internet";
             this.checkInternetConnectivityToolStripMenuItem.Click += new System.EventHandler(this.checkInternetConnectivityToolStripMenuItem_Click);
             // 
+            // bigGUIScaleToolStripMenuItem
+            // 
+            this.bigGUIScaleToolStripMenuItem.Name = "bigGUIScaleToolStripMenuItem";
+            this.bigGUIScaleToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.bigGUIScaleToolStripMenuItem.Text = "Increase GUI scale";
+            this.bigGUIScaleToolStripMenuItem.Click += new System.EventHandler(this.bigGUIScaleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
+            // 
+            // browseVisualNovelsToolStripMenuItem
+            // 
+            this.browseVisualNovelsToolStripMenuItem.Name = "browseVisualNovelsToolStripMenuItem";
+            this.browseVisualNovelsToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.browseVisualNovelsToolStripMenuItem.Text = "Browse visual novels";
+            this.browseVisualNovelsToolStripMenuItem.Click += new System.EventHandler(this.browseVisualNovelsToolStripMenuItem_Click);
+            // 
             // btnVN
             // 
             this.btnVN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -585,24 +598,17 @@
             this.cbAnimeSharing.Visible = false;
             this.cbAnimeSharing.Click += new System.EventHandler(this.cbAnyVN);
             // 
-            // bigGUIScaleToolStripMenuItem
+            // toolStripSeparator7
             // 
-            this.bigGUIScaleToolStripMenuItem.Name = "bigGUIScaleToolStripMenuItem";
-            this.bigGUIScaleToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
-            this.bigGUIScaleToolStripMenuItem.Text = "Increase GUI scale";
-            this.bigGUIScaleToolStripMenuItem.Click += new System.EventHandler(this.bigGUIScaleToolStripMenuItem_Click);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(209, 6);
             // 
-            // toolStripSeparator6
+            // goToMessageToolStripMenuItem
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
-            // 
-            // browseVisualNovelsToolStripMenuItem
-            // 
-            this.browseVisualNovelsToolStripMenuItem.Name = "browseVisualNovelsToolStripMenuItem";
-            this.browseVisualNovelsToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
-            this.browseVisualNovelsToolStripMenuItem.Text = "Browse visual novels";
-            this.browseVisualNovelsToolStripMenuItem.Click += new System.EventHandler(this.browseVisualNovelsToolStripMenuItem_Click);
+            this.goToMessageToolStripMenuItem.Name = "goToMessageToolStripMenuItem";
+            this.goToMessageToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.goToMessageToolStripMenuItem.Text = "Go to message";
+            this.goToMessageToolStripMenuItem.Click += new System.EventHandler(this.goToMessageToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -701,6 +707,8 @@
         private System.Windows.Forms.ToolStripMenuItem bigGUIScaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem browseVisualNovelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem goToMessageToolStripMenuItem;
     }
 }
 
