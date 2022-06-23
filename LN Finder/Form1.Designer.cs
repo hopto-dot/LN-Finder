@@ -43,6 +43,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyTitleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyMessageLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.goToDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,11 +72,17 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.copyTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyLinkOfSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseLightNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.男子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.女子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.アマゾンおすすめ商品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkScraperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInternetConnectivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bigGUIScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.useLegacyDiscordScrapingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVN = new System.Windows.Forms.Button();
             this.btnLN = new System.Windows.Forms.Button();
             this.cbRyuu = new System.Windows.Forms.CheckBox();
@@ -83,13 +90,6 @@
             this.cbCrane = new System.Windows.Forms.CheckBox();
             this.cbMiko = new System.Windows.Forms.CheckBox();
             this.cbAnimeSharing = new System.Windows.Forms.CheckBox();
-            this.useLegacyDiscordScrapingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.browseLightNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.男子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.女子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.アマゾンおすすめ商品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyMessageLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -135,6 +135,8 @@
             // 
             this.cbBoroboro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbBoroboro.AutoSize = true;
+            this.cbBoroboro.Checked = true;
+            this.cbBoroboro.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbBoroboro.Location = new System.Drawing.Point(953, 90);
             this.cbBoroboro.Name = "cbBoroboro";
             this.cbBoroboro.Size = new System.Drawing.Size(86, 20);
@@ -159,6 +161,8 @@
             // 
             this.cbZLib.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbZLib.AutoSize = true;
+            this.cbZLib.Checked = true;
+            this.cbZLib.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbZLib.Location = new System.Drawing.Point(953, 142);
             this.cbZLib.Name = "cbZLib";
             this.cbZLib.Size = new System.Drawing.Size(59, 20);
@@ -244,6 +248,13 @@
             this.copyLinkToolStripMenuItem.Text = "Copy link";
             this.copyLinkToolStripMenuItem.Click += new System.EventHandler(this.copyLinkToolStripMenuItem_Click);
             // 
+            // copyMessageLinkToolStripMenuItem
+            // 
+            this.copyMessageLinkToolStripMenuItem.Name = "copyMessageLinkToolStripMenuItem";
+            this.copyMessageLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.copyMessageLinkToolStripMenuItem.Text = "Copy message link";
+            this.copyMessageLinkToolStripMenuItem.Visible = false;
+            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
@@ -317,6 +328,8 @@
             // 
             this.cbNyaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbNyaa.AutoSize = true;
+            this.cbNyaa.Checked = true;
+            this.cbNyaa.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbNyaa.Location = new System.Drawing.Point(950, 168);
             this.cbNyaa.Name = "cbNyaa";
             this.cbNyaa.Size = new System.Drawing.Size(62, 20);
@@ -329,6 +342,8 @@
             // 
             this.cbDLRaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDLRaw.AutoSize = true;
+            this.cbDLRaw.Checked = true;
+            this.cbDLRaw.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDLRaw.Location = new System.Drawing.Point(951, 194);
             this.cbDLRaw.Name = "cbDLRaw";
             this.cbDLRaw.Size = new System.Drawing.Size(73, 20);
@@ -488,6 +503,46 @@
             this.copyLinkOfSelectedToolStripMenuItem.ToolTipText = "Copy the link of the selected result";
             this.copyLinkOfSelectedToolStripMenuItem.Click += new System.EventHandler(this.copyLinkOfSelectedToolStripMenuItem_Click);
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.browseLightNovelsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // browseLightNovelsToolStripMenuItem
+            // 
+            this.browseLightNovelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.男子向けToolStripMenuItem,
+            this.女子向けToolStripMenuItem,
+            this.アマゾンおすすめ商品ToolStripMenuItem});
+            this.browseLightNovelsToolStripMenuItem.Name = "browseLightNovelsToolStripMenuItem";
+            this.browseLightNovelsToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.browseLightNovelsToolStripMenuItem.Text = "Browse light novels";
+            this.browseLightNovelsToolStripMenuItem.ToolTipText = "Browse light novels";
+            // 
+            // 男子向けToolStripMenuItem
+            // 
+            this.男子向けToolStripMenuItem.Name = "男子向けToolStripMenuItem";
+            this.男子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.男子向けToolStripMenuItem.Text = "男子向け";
+            this.男子向けToolStripMenuItem.Click += new System.EventHandler(this.男子向けToolStripMenuItem_Click);
+            // 
+            // 女子向けToolStripMenuItem
+            // 
+            this.女子向けToolStripMenuItem.Name = "女子向けToolStripMenuItem";
+            this.女子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.女子向けToolStripMenuItem.Text = "女子向け";
+            this.女子向けToolStripMenuItem.Click += new System.EventHandler(this.女子向けToolStripMenuItem_Click);
+            // 
+            // アマゾンおすすめ商品ToolStripMenuItem
+            // 
+            this.アマゾンおすすめ商品ToolStripMenuItem.Name = "アマゾンおすすめ商品ToolStripMenuItem";
+            this.アマゾンおすすめ商品ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.アマゾンおすすめ商品ToolStripMenuItem.Text = "アマゾンおすすめ商品";
+            this.アマゾンおすすめ商品ToolStripMenuItem.Click += new System.EventHandler(this.アマゾンおすすめ商品ToolStripMenuItem_Click);
+            // 
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -528,6 +583,15 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(275, 6);
+            // 
+            // useLegacyDiscordScrapingToolStripMenuItem
+            // 
+            this.useLegacyDiscordScrapingToolStripMenuItem.Name = "useLegacyDiscordScrapingToolStripMenuItem";
+            this.useLegacyDiscordScrapingToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.useLegacyDiscordScrapingToolStripMenuItem.Text = "Use legacy Discord scraping";
+            this.useLegacyDiscordScrapingToolStripMenuItem.ToolTipText = "i.e. don\'t detect duplicates or group related downloads into one result (not perm" +
+    "anent)";
+            this.useLegacyDiscordScrapingToolStripMenuItem.Click += new System.EventHandler(this.useLegacyDiscordScrapingToolStripMenuItem_Click);
             // 
             // btnVN
             // 
@@ -616,62 +680,6 @@
             this.cbAnimeSharing.UseVisualStyleBackColor = true;
             this.cbAnimeSharing.Visible = false;
             this.cbAnimeSharing.Click += new System.EventHandler(this.cbAnyVN);
-            // 
-            // useLegacyDiscordScrapingToolStripMenuItem
-            // 
-            this.useLegacyDiscordScrapingToolStripMenuItem.Name = "useLegacyDiscordScrapingToolStripMenuItem";
-            this.useLegacyDiscordScrapingToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
-            this.useLegacyDiscordScrapingToolStripMenuItem.Text = "Use legacy Discord scraping";
-            this.useLegacyDiscordScrapingToolStripMenuItem.ToolTipText = "i.e. don\'t detect duplicates or group related downloads into one result (not perm" +
-    "anent)";
-            this.useLegacyDiscordScrapingToolStripMenuItem.Click += new System.EventHandler(this.useLegacyDiscordScrapingToolStripMenuItem_Click);
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.browseLightNovelsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // browseLightNovelsToolStripMenuItem
-            // 
-            this.browseLightNovelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.男子向けToolStripMenuItem,
-            this.女子向けToolStripMenuItem,
-            this.アマゾンおすすめ商品ToolStripMenuItem});
-            this.browseLightNovelsToolStripMenuItem.Name = "browseLightNovelsToolStripMenuItem";
-            this.browseLightNovelsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.browseLightNovelsToolStripMenuItem.Text = "Browse light novels";
-            this.browseLightNovelsToolStripMenuItem.ToolTipText = "Browse light novels";
-            // 
-            // 男子向けToolStripMenuItem
-            // 
-            this.男子向けToolStripMenuItem.Name = "男子向けToolStripMenuItem";
-            this.男子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.男子向けToolStripMenuItem.Text = "男子向け";
-            this.男子向けToolStripMenuItem.Click += new System.EventHandler(this.男子向けToolStripMenuItem_Click);
-            // 
-            // 女子向けToolStripMenuItem
-            // 
-            this.女子向けToolStripMenuItem.Name = "女子向けToolStripMenuItem";
-            this.女子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.女子向けToolStripMenuItem.Text = "女子向け";
-            this.女子向けToolStripMenuItem.Click += new System.EventHandler(this.女子向けToolStripMenuItem_Click);
-            // 
-            // アマゾンおすすめ商品ToolStripMenuItem
-            // 
-            this.アマゾンおすすめ商品ToolStripMenuItem.Name = "アマゾンおすすめ商品ToolStripMenuItem";
-            this.アマゾンおすすめ商品ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.アマゾンおすすめ商品ToolStripMenuItem.Text = "アマゾンおすすめ商品";
-            this.アマゾンおすすめ商品ToolStripMenuItem.Click += new System.EventHandler(this.アマゾンおすすめ商品ToolStripMenuItem_Click);
-            // 
-            // copyMessageLinkToolStripMenuItem
-            // 
-            this.copyMessageLinkToolStripMenuItem.Name = "copyMessageLinkToolStripMenuItem";
-            this.copyMessageLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
-            this.copyMessageLinkToolStripMenuItem.Text = "Copy message link";
-            this.copyMessageLinkToolStripMenuItem.Visible = false;
             // 
             // Form1
             // 

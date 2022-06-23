@@ -29,7 +29,7 @@ namespace LN_Finder
         class Settings
         {
             public string DToken = "";
-            public int resultsSize = 11;
+            public int resultsSize = -1;
         }
         class Link
         {
@@ -51,12 +51,20 @@ namespace LN_Finder
         Settings settings = new Settings();
         List<Link> links = new List<Link>();
         bool firstOpen = false;
-        bool clickedVN = true;
+        bool clickedVN = false;
         bool discordLegacy = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            loadSettings();
+            try
+            {
+                loadSettings();
+            } catch
+            {
+                MessageBox.Show("Something went wrong when trying to load the settings", "Setup error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (settings.resultsSize == -1) { settings.resultsSize = 11; }
+            }
+
             if (settings.DToken != "") { cbDiscord.Checked = true; }
             toolStripTextBox1.Text = settings.DToken;
 
@@ -73,13 +81,32 @@ namespace LN_Finder
             if (File.Exists("settings.json"))
             {
                 settingsString = File.ReadAllText("settings.json");
-                settings = JsonConvert.DeserializeObject<Settings>(settingsString);
+                Settings newSettings = new Settings();
+                try
+                {
+                    newSettings = JsonConvert.DeserializeObject<Settings>(settingsString);
+                } catch
+                {
+                    MessageBox.Show("The provided settings file was not in the right format, creating a new one", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    newSettings.resultsSize = 11;
+                    settingsString = JsonConvert.SerializeObject(newSettings, Formatting.Indented);
+                    File.WriteAllText("settings.json", settingsString);
+                }
+                
+                if (newSettings.resultsSize == -1)
+                {
+                    MessageBox.Show("The provided settings file was not made to work with this version of LN Finder, converting it to the right format", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    newSettings.resultsSize = 11;
+                    settingsString = JsonConvert.SerializeObject(newSettings, Formatting.Indented);
+                    File.WriteAllText("settings.json", settingsString);
+                }
+                settings = newSettings;
             }
             else
             {
                 firstOpen = true;
-                MessageBox.Show("Settings file created" ,"LN Finder");
                 settings = new Settings();
+                settings.resultsSize = 11;
                 settings.DToken = "";
                 settingsString = JsonConvert.SerializeObject(settings, Formatting.Indented);
                 File.WriteAllText("settings.json", settingsString);
@@ -224,7 +251,7 @@ namespace LN_Finder
 
         private void addAllLinks()
         {
-            if (links.Count == 0) { MessageBox.Show("Nothing found.", "LN Finder"); Text = "LN Finder - Nothing found"; return; }
+            if (links.Count == 0) { Text = "LN Finder - Nothing found"; MessageBox.Show("Nothing found.", "LN Finder"); return; }
             Text = $"LN Finder - {links.Count} found";
             int i = 0;
             foreach (Link link in links)
@@ -387,6 +414,10 @@ namespace LN_Finder
                         File.WriteAllText("settings.json", settingsString);
 
                         MessageBox.Show($"Discord token is now {token}", "LN Finder");
+                    }
+                    else
+                    {
+                        cbDiscord.Checked = false;
                     }
                 }
 
@@ -759,14 +790,16 @@ namespace LN_Finder
 
             form.Text = title;
             label.Text = promptText;
+            label.Font = new Font(label.Font.Name, 10);
             textBox.Text = value;
+            textBox.Font = new Font(textBox.Font.Name, 10);
 
             buttonOk.Text = "OK";
             buttonCancel.Text = "Cancel";
             buttonOk.DialogResult = DialogResult.OK;
             buttonCancel.DialogResult = DialogResult.Cancel;
 
-            label.SetBounds(9, 15, 372, 13);
+            label.SetBounds(9, 10, 372, 13);
             textBox.SetBounds(12, 36, 372, 20);
             buttonOk.SetBounds(228, 72, 75, 26);
             buttonCancel.SetBounds(309, 72, 75, 26);
@@ -805,6 +838,10 @@ namespace LN_Finder
 
                     toolStripTextBox1.Text = settings.DToken;
                     MessageBox.Show($"Discord token is now {token}", "LN Finder");
+                }
+                else
+                {
+                    cbDiscord.Checked = false;
                 }
             }
         }
@@ -1195,9 +1232,6 @@ namespace LN_Finder
             }
             else //visual novels
             {
-                if (clickedVN == false) { MessageBox.Show("This feature doesn't work yet!", "Search Visual Novels", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                clickedVN = true;
-
                 cbRyuu.Checked = true;
                 btnLN.Enabled = true;
                 btnVN.Enabled = false;
@@ -1228,6 +1262,9 @@ namespace LN_Finder
                 {
                     cbAll.Checked = false;
                 }
+
+                if (clickedVN == false) { MessageBox.Show("This feature doesn't work yet!", "Search Visual Novels", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                clickedVN = true;
             }
         }
 
