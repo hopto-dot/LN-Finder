@@ -43,7 +43,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyTitleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.goToLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.goToDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.resizeHeadersToFitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,7 +76,6 @@
             this.checkInternetConnectivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bigGUIScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.browseVisualNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVN = new System.Windows.Forms.Button();
             this.btnLN = new System.Windows.Forms.Button();
             this.cbRyuu = new System.Windows.Forms.CheckBox();
@@ -82,8 +83,13 @@
             this.cbCrane = new System.Windows.Forms.CheckBox();
             this.cbMiko = new System.Windows.Forms.CheckBox();
             this.cbAnimeSharing = new System.Windows.Forms.CheckBox();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.goToMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.useLegacyDiscordScrapingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseLightNovelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.男子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.女子向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.アマゾンおすすめ商品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyMessageLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -212,15 +218,16 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyTitleToolStripMenuItem1,
             this.copyLinkToolStripMenuItem,
+            this.copyMessageLinkToolStripMenuItem,
             this.toolStripSeparator7,
-            this.goToLinkToolStripMenuItem,
+            this.goToDownloadToolStripMenuItem,
             this.goToMessageToolStripMenuItem,
             this.toolStripSeparator4,
             this.resizeHeadersToFitToolStripMenuItem,
             this.toolStripSeparator3,
             this.clearListToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 194);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 190);
             this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
             // 
             // copyTitleToolStripMenuItem1
@@ -237,12 +244,24 @@
             this.copyLinkToolStripMenuItem.Text = "Copy link";
             this.copyLinkToolStripMenuItem.Click += new System.EventHandler(this.copyLinkToolStripMenuItem_Click);
             // 
-            // goToLinkToolStripMenuItem
+            // toolStripSeparator7
             // 
-            this.goToLinkToolStripMenuItem.Name = "goToLinkToolStripMenuItem";
-            this.goToLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
-            this.goToLinkToolStripMenuItem.Text = "Go to download";
-            this.goToLinkToolStripMenuItem.Click += new System.EventHandler(this.goToLinkToolStripMenuItem_Click);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(209, 6);
+            // 
+            // goToDownloadToolStripMenuItem
+            // 
+            this.goToDownloadToolStripMenuItem.Name = "goToDownloadToolStripMenuItem";
+            this.goToDownloadToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.goToDownloadToolStripMenuItem.Text = "Go to download";
+            this.goToDownloadToolStripMenuItem.Click += new System.EventHandler(this.goToLinkToolStripMenuItem_Click);
+            // 
+            // goToMessageToolStripMenuItem
+            // 
+            this.goToMessageToolStripMenuItem.Name = "goToMessageToolStripMenuItem";
+            this.goToMessageToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.goToMessageToolStripMenuItem.Text = "Go to message";
+            this.goToMessageToolStripMenuItem.Click += new System.EventHandler(this.goToMessageToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -337,6 +356,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -383,6 +403,7 @@
             this.resetSettingsToolStripMenuItem.Name = "resetSettingsToolStripMenuItem";
             this.resetSettingsToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.resetSettingsToolStripMenuItem.Text = "Reset settings";
+            this.resetSettingsToolStripMenuItem.ToolTipText = "Reset all your settings";
             this.resetSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetSettingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -418,6 +439,7 @@
             this.changeDiscordTokenToolStripMenuItem.Name = "changeDiscordTokenToolStripMenuItem";
             this.changeDiscordTokenToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.changeDiscordTokenToolStripMenuItem.Text = "Change Discord token";
+            this.changeDiscordTokenToolStripMenuItem.ToolTipText = "Change the Discord token the program uses";
             // 
             // toolStripTextBox1
             // 
@@ -433,6 +455,7 @@
             this.changeResultsToolStripMenuItem.Name = "changeResultsToolStripMenuItem";
             this.changeResultsToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.changeResultsToolStripMenuItem.Text = "Change results size";
+            this.changeResultsToolStripMenuItem.ToolTipText = "Changes the font size of the text in the results box";
             // 
             // toolStripTextBox2
             // 
@@ -453,6 +476,7 @@
             this.copyTitleToolStripMenuItem.Name = "copyTitleToolStripMenuItem";
             this.copyTitleToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.copyTitleToolStripMenuItem.Text = "Copy title of selected";
+            this.copyTitleToolStripMenuItem.ToolTipText = "Copy the title of the selected result";
             this.copyTitleToolStripMenuItem.Click += new System.EventHandler(this.copyTitleToolStripMenuItem_Click);
             // 
             // copyLinkOfSelectedToolStripMenuItem
@@ -461,6 +485,7 @@
             this.copyLinkOfSelectedToolStripMenuItem.Name = "copyLinkOfSelectedToolStripMenuItem";
             this.copyLinkOfSelectedToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.copyLinkOfSelectedToolStripMenuItem.Text = "Copy link of selected";
+            this.copyLinkOfSelectedToolStripMenuItem.ToolTipText = "Copy the link of the selected result";
             this.copyLinkOfSelectedToolStripMenuItem.Click += new System.EventHandler(this.copyLinkOfSelectedToolStripMenuItem_Click);
             // 
             // debugToolStripMenuItem
@@ -470,7 +495,7 @@
             this.checkInternetConnectivityToolStripMenuItem,
             this.bigGUIScaleToolStripMenuItem,
             this.toolStripSeparator6,
-            this.browseVisualNovelsToolStripMenuItem});
+            this.useLegacyDiscordScrapingToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -478,7 +503,7 @@
             // checkScraperToolStripMenuItem
             // 
             this.checkScraperToolStripMenuItem.Name = "checkScraperToolStripMenuItem";
-            this.checkScraperToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.checkScraperToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
             this.checkScraperToolStripMenuItem.Text = "Check scraper functionality";
             this.checkScraperToolStripMenuItem.ToolTipText = "Test to make sure the scrapers are working";
             this.checkScraperToolStripMenuItem.Click += new System.EventHandler(this.checkScraperToolStripMenuItem_Click);
@@ -486,7 +511,7 @@
             // checkInternetConnectivityToolStripMenuItem
             // 
             this.checkInternetConnectivityToolStripMenuItem.Name = "checkInternetConnectivityToolStripMenuItem";
-            this.checkInternetConnectivityToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.checkInternetConnectivityToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
             this.checkInternetConnectivityToolStripMenuItem.Text = "Check internet connection";
             this.checkInternetConnectivityToolStripMenuItem.ToolTipText = "Check if you are connected to the internet";
             this.checkInternetConnectivityToolStripMenuItem.Click += new System.EventHandler(this.checkInternetConnectivityToolStripMenuItem_Click);
@@ -494,21 +519,15 @@
             // bigGUIScaleToolStripMenuItem
             // 
             this.bigGUIScaleToolStripMenuItem.Name = "bigGUIScaleToolStripMenuItem";
-            this.bigGUIScaleToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.bigGUIScaleToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
             this.bigGUIScaleToolStripMenuItem.Text = "Increase GUI scale";
+            this.bigGUIScaleToolStripMenuItem.ToolTipText = "Make the size of text bigger (not permanent)";
             this.bigGUIScaleToolStripMenuItem.Click += new System.EventHandler(this.bigGUIScaleToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(266, 6);
-            // 
-            // browseVisualNovelsToolStripMenuItem
-            // 
-            this.browseVisualNovelsToolStripMenuItem.Name = "browseVisualNovelsToolStripMenuItem";
-            this.browseVisualNovelsToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
-            this.browseVisualNovelsToolStripMenuItem.Text = "Browse visual novels";
-            this.browseVisualNovelsToolStripMenuItem.Click += new System.EventHandler(this.browseVisualNovelsToolStripMenuItem_Click);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(275, 6);
             // 
             // btnVN
             // 
@@ -598,17 +617,61 @@
             this.cbAnimeSharing.Visible = false;
             this.cbAnimeSharing.Click += new System.EventHandler(this.cbAnyVN);
             // 
-            // toolStripSeparator7
+            // useLegacyDiscordScrapingToolStripMenuItem
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(209, 6);
+            this.useLegacyDiscordScrapingToolStripMenuItem.Name = "useLegacyDiscordScrapingToolStripMenuItem";
+            this.useLegacyDiscordScrapingToolStripMenuItem.Size = new System.Drawing.Size(278, 26);
+            this.useLegacyDiscordScrapingToolStripMenuItem.Text = "Use legacy Discord scraping";
+            this.useLegacyDiscordScrapingToolStripMenuItem.ToolTipText = "i.e. don\'t detect duplicates or group related downloads into one result (not perm" +
+    "anent)";
+            this.useLegacyDiscordScrapingToolStripMenuItem.Click += new System.EventHandler(this.useLegacyDiscordScrapingToolStripMenuItem_Click);
             // 
-            // goToMessageToolStripMenuItem
+            // toolsToolStripMenuItem
             // 
-            this.goToMessageToolStripMenuItem.Name = "goToMessageToolStripMenuItem";
-            this.goToMessageToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
-            this.goToMessageToolStripMenuItem.Text = "Go to message";
-            this.goToMessageToolStripMenuItem.Click += new System.EventHandler(this.goToMessageToolStripMenuItem_Click);
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.browseLightNovelsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // browseLightNovelsToolStripMenuItem
+            // 
+            this.browseLightNovelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.男子向けToolStripMenuItem,
+            this.女子向けToolStripMenuItem,
+            this.アマゾンおすすめ商品ToolStripMenuItem});
+            this.browseLightNovelsToolStripMenuItem.Name = "browseLightNovelsToolStripMenuItem";
+            this.browseLightNovelsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.browseLightNovelsToolStripMenuItem.Text = "Browse light novels";
+            this.browseLightNovelsToolStripMenuItem.ToolTipText = "Browse light novels";
+            // 
+            // 男子向けToolStripMenuItem
+            // 
+            this.男子向けToolStripMenuItem.Name = "男子向けToolStripMenuItem";
+            this.男子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.男子向けToolStripMenuItem.Text = "男子向け";
+            this.男子向けToolStripMenuItem.Click += new System.EventHandler(this.男子向けToolStripMenuItem_Click);
+            // 
+            // 女子向けToolStripMenuItem
+            // 
+            this.女子向けToolStripMenuItem.Name = "女子向けToolStripMenuItem";
+            this.女子向けToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.女子向けToolStripMenuItem.Text = "女子向け";
+            this.女子向けToolStripMenuItem.Click += new System.EventHandler(this.女子向けToolStripMenuItem_Click);
+            // 
+            // アマゾンおすすめ商品ToolStripMenuItem
+            // 
+            this.アマゾンおすすめ商品ToolStripMenuItem.Name = "アマゾンおすすめ商品ToolStripMenuItem";
+            this.アマゾンおすすめ商品ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.アマゾンおすすめ商品ToolStripMenuItem.Text = "アマゾンおすすめ商品";
+            this.アマゾンおすすめ商品ToolStripMenuItem.Click += new System.EventHandler(this.アマゾンおすすめ商品ToolStripMenuItem_Click);
+            // 
+            // copyMessageLinkToolStripMenuItem
+            // 
+            this.copyMessageLinkToolStripMenuItem.Name = "copyMessageLinkToolStripMenuItem";
+            this.copyMessageLinkToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.copyMessageLinkToolStripMenuItem.Text = "Copy message link";
+            this.copyMessageLinkToolStripMenuItem.Visible = false;
             // 
             // Form1
             // 
@@ -616,6 +679,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 509);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.cbAnimeSharing);
             this.Controls.Add(this.cbMiko);
             this.Controls.Add(this.cbGGB);
@@ -691,7 +755,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyTitleToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem copyLinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem goToLinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToDownloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem resizeHeadersToFitToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -706,9 +770,15 @@
         private System.Windows.Forms.CheckBox cbAnimeSharing;
         private System.Windows.Forms.ToolStripMenuItem bigGUIScaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem browseVisualNovelsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem goToMessageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useLegacyDiscordScrapingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem browseLightNovelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 男子向けToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 女子向けToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem アマゾンおすすめ商品ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyMessageLinkToolStripMenuItem;
     }
 }
 
