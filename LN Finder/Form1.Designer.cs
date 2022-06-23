@@ -104,6 +104,7 @@
             this.tbxSearch.Name = "tbxSearch";
             this.tbxSearch.Size = new System.Drawing.Size(839, 30);
             this.tbxSearch.TabIndex = 0;
+            this.tbxSearch.Text = "まいてつ";
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
             // btnSearch
@@ -366,7 +367,7 @@
             this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1071, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1071, 30);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 

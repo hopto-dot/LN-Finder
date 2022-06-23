@@ -51,7 +51,7 @@ namespace LN_Finder
         Settings settings = new Settings();
         List<Link> links = new List<Link>();
         bool firstOpen = false;
-        bool clickedVN = false;
+        bool clickedVN = true;
         bool discordLegacy = false;
 
         private void Form1_Load(object sender, EventArgs e)
@@ -119,16 +119,96 @@ namespace LN_Finder
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (btnLN.Enabled == false)  //light novel search selected
+            if (!btnLN.Enabled)  //light novel search selected
             {
                 startNovelSearch();
             }
-            else //visual novel search selected
+            else if (!btnVN.Enabled) //visual novel search selected
             {
+                startVisualNovelSearch();
+            }
+        }
+        //VISUAL NOVEL SEARCH//
+        private void startVisualNovelSearch(bool testScrapers = false)
+        {
+            if (tbxSearch.Text.Trim() == "") { return; }
+            Text = testScrapers ? "VN Finder - Testing scrapers..." : "VN Finder - Searching...";
 
+            listView1.Items.Clear();
+            links.Clear();
+            List<Task> actions = new List<Task>();
+
+            if (testScrapers == false)
+            {
+                if (cbRyuu.Checked)
+                {
+                    var ryuuTask = new Task(searchRyuu);
+                    ryuuTask.Start();
+                    actions.Add(ryuuTask);
+                }
+
+                Task.WaitAll(actions.ToArray());
+
+
+                if (links.Count == 0)
+                {
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+                else
+                {
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
+                    listView1.Columns[0].Width = 50;
+                    listView1.Columns[1].Width = 100 * settings.resultsSize / 9;
+                    listView1.Columns[2].Width = 650 * settings.resultsSize / 9;
+                    listView1.Columns[3].Width = 700 * settings.resultsSize / 9;
+                }
+                if (testScrapers == false)
+                {
+                    addAllLinks();
+                }
+            }
+        }
+        private void searchRyuu()
+        {
+            var Client = new WebClient();
+            string html = "";
+
+            try
+            {
+                html = Client.DownloadString(new Uri($"https://ryuugames.com/?s={tbxSearch.Text}"));
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(html);
+
+            var results = document.DocumentNode.SelectNodes("html[1]/body[1]/div[6]/div[2]/div[1]/div[2]/div[1]/div[1]");
+
+            foreach(var resultsDiv in results[0].ChildNodes)
+            {
+                if (resultsDiv.Name != "div") { continue; }
+                if (resultsDiv.Attributes.Count == 0) { continue; }
+                if (resultsDiv.Attributes[0].DeEntitizeValue != "td-block-row") { continue; }
+
+                foreach (var result in resultsDiv.ChildNodes)
+                {
+                    if (result.Name != "div") { continue; }
+                    Link link = new Link();
+                    link.Description = HttpUtility.HtmlDecode(result.ChildNodes[1].ChildNodes[3].InnerText);
+                    link.URL = result.ChildNodes[1].ChildNodes[3].ChildNodes[0].Attributes["href"].Value;
+                    link.directDownload = false;
+                    link.ID = links.Count;
+                    link.Type = "Ryuu";
+                    links.Add(link);
+                }
             }
         }
 
+
+        //NOVEL SEARCH//
         private void startNovelSearch(bool testScrapers = false)
         {
             if (tbxSearch.Text.Trim() == "") { return; }
@@ -139,31 +219,31 @@ namespace LN_Finder
             List<Task> actions = new List<Task>();
             if (testScrapers == false)
             {
-                if (cbDiscord.Checked == true && settings.DToken != "")
+                if (cbDiscord.Checked && settings.DToken != "")
                 {
                     var discordTask = new Task(searchDiscord);
                     discordTask.Start();
                     actions.Add(discordTask);
                 }
-                if (cbBoroboro.Checked == true)
+                if (cbBoroboro.Checked)
                 {
                     var boroboroTask = new Task(searchBoroBoro);
                     boroboroTask.Start();
                     actions.Add(boroboroTask);
                 }
-                if (cbItazuraneko.Checked == true)
+                if (cbItazuraneko.Checked)
                 {
                     var itazuraTask = new Task(searchItazura);
                     itazuraTask.Start();
                     actions.Add(itazuraTask);
                 }
-                if (cbZLib.Checked == true)
+                if (cbZLib.Checked)
                 {
                     var zLibTask = new Task(searchZLib);
                     zLibTask.Start();
                     actions.Add(zLibTask);
                 }
-                if (cbNyaa.Checked == true)
+                if (cbNyaa.Checked)
                 {
                     var nyaaTask = new Task(searchNyaa);
                     nyaaTask.Start();
@@ -172,7 +252,7 @@ namespace LN_Finder
                     bigNyaaTask.Start();
                     actions.Add(bigNyaaTask);
                 }
-                if (cbDLRaw.Checked == true)
+                if (cbDLRaw.Checked)
                 {
                     var dlRawTask = new Task(searchDLRaw);
                     dlRawTask.Start();
@@ -933,7 +1013,17 @@ namespace LN_Finder
 
         private void tbxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r') { startNovelSearch(); }
+            if (e.KeyChar == '\r')
+            {
+                if (!btnLN.Enabled)  //light novel search selected
+                {
+                    startNovelSearch();
+                }
+                else if (!btnVN.Enabled) //visual novel search selected
+                {
+                    startVisualNovelSearch();
+                }
+            }
         }
 
         //select all
